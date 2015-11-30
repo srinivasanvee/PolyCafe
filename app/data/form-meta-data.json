@@ -1,0 +1,25 @@
+{
+	"Fields": [
+		{
+			"Name": "Name",
+			"Text": "Name",
+			"Required": "required",
+			"IsText": true
+		},
+		{
+			"Name": "City",
+			"Text": "City",
+			"Required": "required",
+			"IsText": true
+		},
+		{
+			"Name": "Phone",
+			"Text": "Phone",
+			"IsText": true,
+			"Hidable": true,
+			"Hidden": true
+		}
+	],
+	"Header": "Test Header for Vaadin Grid",
+	"VisibleRows": 3
+}

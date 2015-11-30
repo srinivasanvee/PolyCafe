@@ -1,0 +1,109 @@
+<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+
+<dom-module id="pc-form">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <div>{{formMetaData.Header}}</span>
+    </div>
+
+    <iron-ajax url="../../data/form-meta-data.json" last-response="{{formMetaData}}" auto></iron-ajax>
+    <iron-ajax id="ajxData" url="../../data/test-form-data.json" last-response="{{formData}}"></iron-ajax>
+    <iron-ajax url="../../data/cities.json" last-response="{{cities}}" auto></iron-ajax>
+ 
+    <form is="iron-form" id="form" method="post" action="/form/handler">
+      <template is="dom-repeat" items="{{formMetaData.Fields}}">
+        
+        <!--<template is="dom-if" if="{{item.IsText}}">      
+          <paper-input id="{{item.Name}}" label="{{item.Text}}" required="{{item.Required}}" value="{{GetValueKey(item.Name)}}"></paper-input>
+        </template>
+         
+        <template is="dom-if" if="{{item.IsDropdown}}">      
+          <pc-dropdown id="{{item.Name}}" display-key="Name" value-key="Id" label="{{item.Text}}" data="{{cities}}"></pc-dropdown>
+        </template>-->
+        
+      </template>
+      <!--<br>-->
+      <!--<paper-button raised on-click="submitForm">Submit</paper-button>-->
+    </form>
+
+  </template>
+  <script>
+    (function() {
+    'use strict';
+
+    Polymer({
+      is: 'pc-form',
+      
+      properties: {
+        formMetaData: {
+          observer: "makeDataCall"
+        },
+        formData: {
+          observer: "updateFormData"
+        }
+      },
+      GetValueKey: function(name)
+      {
+        if(!this.formData) return;
+        return this.formData[name];
+      },
+      SubmitText: function() {
+        if(this.formData && this.formData["Id"]) return "Update";
+        return "Add"; 
+      }, 
+      updateFormData: function(newVal) {
+        if(newVal)
+        { 
+          _.each(this.formMetaData.Fields, function(x) {
+              document.querySelector("#" + x.Name).value = newVal[x.Name]; 
+          });
+        }
+      },
+      submitForm: function() {
+          var dat = {};
+          _.each(this.formMetaData.Fields, function(x) {
+              var obj = document.querySelector("#" + x.Name);
+              if(obj)
+              {
+                dat[x.Name] = obj.value;
+              }
+          });
+          
+        console.log(JSON.stringify(dat));
+        document.getElementById('form').submit();
+      },
+      makeDataCall: function(newVal) {
+          var parent = this 
+          _.each(this.formMetaData.Fields, function(x) {
+              if(x.IsText)
+              { 
+                  var dynamicEl = document.createElement("paper-input");
+                  dynamicEl.setAttribute("id", x.Name);
+                  dynamicEl.setAttribute("label", x.Name);
+                  dynamicEl.setAttribute("required", x.Required);
+                  dynamicEl.setAttribute("value", parent.GetValueKey(x.Name));
+                  parent.$.iron-form.appendChild(dynamicEl);
+              }
+              else if(x.IsDropdown)
+              {
+                
+              }
+              document.querySelector("#" + x.Name).value = newVal[x.Name]; 
+          });
+
+          var dynSubmit = document.createElement("paper-button");
+          var newContent = document.createTextNode("Subtmit");
+          dynSubmit.appendChild(newContent);
+          dynSubmit.setAttribute("on-click", "this.submitForm"); 
+          parent.$.iron-form.appendChild(dynSubmit);  
+
+          this.$.ajxData.generateRequest();
+      }
+    });
+  })();
+  </script>
+</dom-module>

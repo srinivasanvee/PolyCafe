@@ -1,0 +1,47 @@
+<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+
+<dom-module id="pc-grid-main">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <div>{{gridMetaData.Header}}</span></div>
+
+    <iron-ajax url="../../data/form-meta-data.json" last-response="{{gridMetaData}}" auto></iron-ajax>
+    <iron-ajax id="ajxData" url="../../data/test-grid-data.json" last-response="{{gridItems}}"></iron-ajax>
+    
+    <pc-grid grid-meta-data="{{gridMetaData}}" 
+              grid-items="{{gridItems}}"
+              selected-item="{{selectedItem}}"></pc-grid>
+
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'pc-grid-main',
+      
+      properties: {
+        gridMetaData: {
+          observer: "makeDataCall"
+        },
+        gridItems: {
+        },
+        selectedItem: {
+          observer: "selectionChanged"
+        } 
+      },
+      selectionChanged: function(newVal) {
+        console.log(newVal);
+      },
+      makeDataCall: function(newVal) {
+        this.$.ajxData.generateRequest();
+      }
+    });
+  })();
+  
+  </script>
+</dom-module>

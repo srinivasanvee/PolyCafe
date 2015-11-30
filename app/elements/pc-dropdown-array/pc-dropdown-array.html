@@ -1,0 +1,31 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="pc-dropdown-array">
+  <template>
+    <paper-dropdown-menu label="{{label}}" value="{{selectedData}}">
+      <paper-menu id="ccdropdown" class="dropdown-content" selected="{{selectedData}}" attr-for-selected="value">
+        <template is="dom-repeat" items="{{data}}">
+            <paper-item value="{{item}}">{{item}}</paper-item>
+		    </template>
+      </paper-menu>
+    </paper-dropdown-menu>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+      Polymer({
+        is: 'pc-dropdown-array',
+          properties: {
+              selectedData: {
+                notify: true,
+                reflectToAttribute: true
+              },
+              label: {
+                value: "Select"
+              }
+          }
+      });
+    })();
+  </script>
+</dom-module>

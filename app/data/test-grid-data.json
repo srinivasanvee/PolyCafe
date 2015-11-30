@@ -1,0 +1,22 @@
+[
+	{
+		"Name": "Srini",
+		"Phone": 11111111,
+		"City": "LA"
+	},
+	{
+		"Name": "Dhina",
+		"Value": 6666666,
+		"City": "Chennai"
+	},
+	{
+		"Name": "Ananth",
+		"Value": 4444444,
+		"City": "Karur"
+	},
+	{
+		"Name": "Thilak",
+		"Value": 3333333,
+		"City": "Hyderabad"
+	}
+]

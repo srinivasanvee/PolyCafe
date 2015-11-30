@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="pc-dropdown">
+  <template>
+    <paper-dropdown-menu label="{{label}}"> 
+      <paper-menu id="ccdropdown" class="dropdown-content" selected="{{selectedData}}" attr-for-selected="key">
+        <template is="dom-repeat" items="{{data}}">
+            <paper-item key="{{GetValueKey(item)}}">{{GetDisplayText(item)}}</paper-item>
+		    </template>
+      </paper-menu>
+    </paper-dropdown-menu>
+  </template>
+  
+  <script> 
+    (function() {
+      'use strict';
+      Polymer({
+        is: 'pc-dropdown',
+          properties: {
+              selectedData: {
+                type: String,
+                notify: true
+              },
+              data: {
+                observer: 'SetInitValue'
+              },
+              initValue: {},
+              label: {},
+              displayKey: {}, 
+              valueKey: {},
+              appendKey: { value: false }
+          },
+          GetValueKey: function(obj)
+          {
+            return obj[this.valueKey];
+          },
+          SetInitValue: function(newVal)
+          {
+             if(this.initValue)  { this.selectedData = this.initValue; }
+          }, 
+          GetDisplayText: function(obj) 
+          {
+            var text = obj[this.displayKey];
+            if(this.appendKey)
+            {
+              text = text + ' (' + obj[this.valueKey] + ')';
+            }
+            return text;
+          }
+      });
+    })();
+  </script>
+</dom-module>
