@@ -24,7 +24,7 @@
               data: {
                 observer: 'SetInitValue'
               },
-              initValue: {},
+              value: {},
               label: {},
               displayKey: {}, 
               valueKey: {},
@@ -34,9 +34,9 @@
           {
             return obj[this.valueKey];
           },
-          SetInitValue: function(newVal)
+          SetInitValue: function()
           {
-             if(this.initValue)  { this.selectedData = this.initValue; }
+             if(this.initValue)  { this.selectedData = this.value; }
           }, 
           GetDisplayText: function(obj) 
           {

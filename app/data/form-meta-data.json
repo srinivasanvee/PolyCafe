@@ -7,10 +7,11 @@
 			"IsText": true
 		},
 		{
-			"Name": "City",
+			"Name": "CityId",
 			"Text": "City",
 			"Required": "required",
-			"IsText": true
+			"IsDropdown": true,
+			"DropdownName": "City"
 		},
 		{
 			"Name": "Phone",

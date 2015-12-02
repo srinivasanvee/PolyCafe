@@ -1,0 +1,105 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="pc-ajax">
+  <template>
+      <style>
+        .pc-ajax
+        { 
+          z-index: 500 !important;
+        }
+        .pc-float
+        { 
+          z-index: 500 !important;
+          float: right;
+        }
+      </style>
+      <iron-ajax id="ironEnv"
+          url="{{url}}" 
+          params="{{params}}"
+          body="{{body}}"
+          handle-as="json" 
+          method="{{method}}"
+          last-response="{{response}}"
+          last-error="{{errorData}}"
+          headers='{"content-type": "application/json"}'
+          debounce-duration="300"
+          on-response="handleResponse"
+          loading="{{loading}}"></iron-ajax>
+     
+       <paper-toast id="toastMessage"></paper-toast>
+       
+       <span class="pc-float"><paper-spinner active id="cc-spinner"></paper-spinner></span>
+  </template>
+ 
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'pc-ajax',
+        properties: {
+            url:  { type: String },
+            mergeData: { type: Object },
+            auto: { type: Boolean, value: false },
+            trigger: { type: Boolean, value: false, observer: 'MakeCall' },
+            method: {
+              type: String,
+              value: 'GET'
+            },
+            params: {},
+            body: {},
+            response: {  
+              notify: true,
+              observer: 'TestMyIron'
+            },
+            errorData: {
+              notify: true,
+              observer: 'ToastError'
+            },
+            loading: {
+              observer: 'HandleLoading'
+            },
+            successEvent: { value: null, type: String }
+        },
+        HandleLoading: function(newVal) {
+          var spinners = document.querySelectorAll('paper-spinner');
+          Array.prototype.forEach.call(spinners, function(spinner) {
+            spinner.active = newVal;
+          });
+        },
+        handleResponse: function(res) {
+          if(res.detail.status === 200)
+          { 
+            if(this.successEvent) this.fire(this.successEvent);         
+            console.log(res.detail.status)
+          }
+        },
+        ready: function()
+        { 
+          this.MakeCall(this.auto);
+        },
+        MakeCall: function(val)
+        { 
+          if(val === false) return;  
+          var irn =  this.$.ironEnv; 
+          irn.generateRequest(); 
+        },
+        TestMyIron: function(newVal, oldVal)
+        {
+            //console.log("Ajax response - " + JSON.stringify(newVal));
+        },
+        ToastError: function(error)
+        { 
+          if(error)
+          { 
+            var toast =  this.$.toastMessage;
+            toast.text = error.error.message;
+            toast.show();
+            console.log(error.error.message);
+          }
+        },
+      });
+    })();
+  </script>
+
+</dom-module>

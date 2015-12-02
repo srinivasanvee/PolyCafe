@@ -30,10 +30,10 @@
           notify: true
         },
         gridMetaData: {
-          observer: "metaDataUpate"
+          observer: 'metaDataUpate'
         },
         gridItems: { 
-          observer: "updateGrid",
+          observer: 'updateGrid',
           type: Array
         },
         selectedItem: {
@@ -46,12 +46,13 @@
           grid.items = newVal;        
       },
       
-      onSelect: function(e){ 
+      onSelect: function(){ 
         var grid = this.$.idVadinGrid;
-        if(!grid || !grid.items) return;
-         
-        var ind = grid.selection.selected();
-        this.selectedItem = grid.items[ind]; 
+        if(grid && grid.items)
+        { 
+          var ind = grid.selection.selected();
+          this.selectedItem = grid.items[ind];
+        } 
       },
 
       metaDataUpate: function(newVal) {
@@ -63,16 +64,16 @@
                            hidable: mdata.Hidable, 
                            hidden: mdata.Hidden,
                            sortable: true,
-                           direction: "desc" });
-        })
+                           direction: 'desc' });
+        });
         
         grid.frozenColumns = 1;
         grid.visibleRows = newVal.VisibleRows; 
-        grid.sortOrder = [{column: 0, direction: "desc"}, {column: 1, direction: "asc"}];
+        grid.sortOrder = [{column: 0, direction: 'desc'}, {column: 1, direction: 'asc'}];
         
         grid.addEventListener('sort-order-changed', function() {
           var idx = grid.sortOrder[0].column;
-          var lesser = grid.sortOrder[0].direction == 'asc' ? -1 : 1;
+          var lesser = grid.sortOrder[0].direction === 'asc' ? -1 : 1;
           var items = this.parentNode.gridItems;
           items.sort(function(a, b) {
             return (a[idx] < b[idx]) ? lesser : -lesser;

@@ -10,24 +10,15 @@
     <div>{{formMetaData.Header}}</span>
     </div>
 
+    <iron-ajax url="../../data/DropDownConfig.json" last-response="{{dropDownConfig}}" auto></iron-ajax>
     <iron-ajax url="../../data/form-meta-data.json" last-response="{{formMetaData}}" auto></iron-ajax>
     <iron-ajax id="ajxData" url="../../data/test-form-data.json" last-response="{{formData}}"></iron-ajax>
-    <iron-ajax url="../../data/cities.json" last-response="{{cities}}" auto></iron-ajax>
  
-    <form is="iron-form" id="form" method="post" action="/form/handler">
-      <template is="dom-repeat" items="{{formMetaData.Fields}}">
-        
-        <!--<template is="dom-if" if="{{item.IsText}}">      
-          <paper-input id="{{item.Name}}" label="{{item.Text}}" required="{{item.Required}}" value="{{GetValueKey(item.Name)}}"></paper-input>
-        </template>
-         
-        <template is="dom-if" if="{{item.IsDropdown}}">      
-          <pc-dropdown id="{{item.Name}}" display-key="Name" value-key="Id" label="{{item.Text}}" data="{{cities}}"></pc-dropdown>
-        </template>-->
-        
-      </template>
-      <!--<br>-->
-      <!--<paper-button raised on-click="submitForm">Submit</paper-button>-->
+    <form is="iron-form" id="ironForm">
+      <div id="ironFormElements">
+      </div>
+      <br>
+      <paper-button raised on-click="submitForm">Submit</paper-button>
     </form>
 
   </template>
@@ -40,66 +31,97 @@
       
       properties: {
         formMetaData: {
-          observer: "makeDataCall"
+          observer: 'handleMetaData'
         },
         formData: {
-          observer: "updateFormData"
+          observer: 'updateFormData'
+        },
+        dropDownConfig: {
         }
       },
       GetValueKey: function(name)
       {
-        if(!this.formData) return;
-        return this.formData[name];
+        if(this.formData) { 
+          return this.formData[name];
+        }
       },
       SubmitText: function() {
-        if(this.formData && this.formData["Id"]) return "Update";
-        return "Add"; 
+        if(this.formData && this.formData.Id) { 
+          return 'Update';
+        }
+        else {
+          return 'Add';
+        } 
       }, 
       updateFormData: function(newVal) {
         if(newVal)
         { 
           _.each(this.formMetaData.Fields, function(x) {
-              document.querySelector("#" + x.Name).value = newVal[x.Name]; 
+              document.querySelector('#' + x.Name).value = newVal[x.Name]; 
           });
         }
       },
       submitForm: function() {
           var dat = {};
-          _.each(this.formMetaData.Fields, function(x) {
-              var obj = document.querySelector("#" + x.Name);
-              if(obj)
-              {
-                dat[x.Name] = obj.value;
-              }
+          this.$.ironForm.submit(function(event){
+            event.preventDefault();
           });
           
-        console.log(JSON.stringify(dat));
-        document.getElementById('form').submit();
+          var validate = this.$.ironForm.validate();
+          
+          if(validate)
+          {
+              _.each(this.formMetaData.Fields, function(x) {
+                    var obj = document.querySelector('#' + x.Name);
+                    if(obj)
+                    {
+                      dat[x.Name] = obj.value;
+                    }
+              });
+              
+              console.log(JSON.stringify(dat));
+          }
       },
-      makeDataCall: function(newVal) {
-          var parent = this 
+      handleMetaData: function(newVal) {
+          var parent = this;
           _.each(this.formMetaData.Fields, function(x) {
               if(x.IsText)
               { 
-                  var dynamicEl = document.createElement("paper-input");
-                  dynamicEl.setAttribute("id", x.Name);
-                  dynamicEl.setAttribute("label", x.Name);
-                  dynamicEl.setAttribute("required", x.Required);
-                  dynamicEl.setAttribute("value", parent.GetValueKey(x.Name));
-                  parent.$.iron-form.appendChild(dynamicEl);
-              }
+                  var dynamicEl = document.createElement('paper-input');
+                  dynamicEl.setAttribute('id', x.Name);
+                  dynamicEl.setAttribute('label', x.Name);
+                  dynamicEl.setAttribute('required', x.Required);
+                  dynamicEl.setAttribute('value', parent.GetValueKey(x.Name));
+                  parent.$.ironFormElements.appendChild(dynamicEl);
+              } 
               else if(x.IsDropdown)
               {
-                
-              }
-              document.querySelector("#" + x.Name).value = newVal[x.Name]; 
-          });
+                  var dynDropDown = document.createElement('pc-dropdown');
+                  dynDropDown.setAttribute('id', x.Name);
+                  dynDropDown.setAttribute('label', x.Text);
+                  dynDropDown.setAttribute('required', x.Required);
 
-          var dynSubmit = document.createElement("paper-button");
-          var newContent = document.createTextNode("Subtmit");
-          dynSubmit.appendChild(newContent);
-          dynSubmit.setAttribute("on-click", "this.submitForm"); 
-          parent.$.iron-form.appendChild(dynSubmit);  
+                  dynDropDown.setAttribute('display-key', 'Name');   
+                  dynDropDown.setAttribute('value-key', 'Id');
+                  //dynDropDown.setAttribute('init-value', );
+                  
+                  var drpIndex = _.findIndex(parent.dropDownConfig, 'Name', x.DropdownName);
+                  if(drpIndex >= 0)
+                  { 
+                    dynDropDown.data = parent.dropDownConfig[drpIndex].Data;
+                    //dynDropDown.initValue = parent.GetValueKey(x.Name);
+                  }
+                  //dynDropDown['selected-data'] = parent.GetValueKey(x.Name);
+
+                  parent.$.ironFormElements.appendChild(dynDropDown);
+  
+                  //todo: dynamic dropdown
+                  // <template is="dom-if" if="{{item.IsDropdown}}">      
+                  //     <pc-dropdown id="{{item.Name}}" display-key="Name" value-key="Id" label="{{item.Text}}" data="{{cities}}"></pc-dropdown>
+                  // </template>
+              }
+              //document.querySelector('#' + x.Name).value = newVal[x.Name]; 
+          });
 
           this.$.ajxData.generateRequest();
       }
