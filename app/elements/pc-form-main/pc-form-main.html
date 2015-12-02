@@ -1,0 +1,32 @@
+<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+
+<dom-module id="pc-form-main">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+  
+    <pc-ajax url="../../data/DropDownConfig.json" response="{{dropDownConfig}}" auto></pc-ajax>
+    <pc-ajax url="../../data/form-meta-data.json" response="{{formMetaData}}" auto></pc-ajax>
+    <pc-form drop-down-config="{{dropDownConfig}}" form-meta-data="{{formMetaData}}"></pc-form>
+
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'pc-form-main',
+      properties: {
+        foo: {
+          type: String,
+          value: 'pc-form-main',
+          notify: true
+        }
+      }
+    });
+  })();
+  </script>
+</dom-module>

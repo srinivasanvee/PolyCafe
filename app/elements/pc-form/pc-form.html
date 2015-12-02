@@ -3,17 +3,16 @@
 <dom-module id="pc-form">
   <template>
     <style>
-      :host {
+      :host { 
         display: block;
       }
     </style>
-    <div>{{formMetaData.Header}}</span>
-    </div>
-
-    <iron-ajax url="../../data/DropDownConfig.json" last-response="{{dropDownConfig}}" auto></iron-ajax>
-    <iron-ajax url="../../data/form-meta-data.json" last-response="{{formMetaData}}" auto></iron-ajax>
+    
     <iron-ajax id="ajxData" url="../../data/test-form-data.json" last-response="{{formData}}"></iron-ajax>
- 
+    
+    <div>{{formMetaData.Header}}</span>
+    </div> 
+
     <form is="iron-form" id="ironForm">
       <div id="ironFormElements">
       </div>
@@ -68,7 +67,6 @@
           });
           
           var validate = this.$.ironForm.validate();
-          
           if(validate)
           {
               _.each(this.formMetaData.Fields, function(x) {
@@ -82,7 +80,7 @@
               console.log(JSON.stringify(dat));
           }
       },
-      handleMetaData: function(newVal) {
+      handleMetaData: function() {
           var parent = this;
           _.each(this.formMetaData.Fields, function(x) {
               if(x.IsText)
@@ -91,7 +89,6 @@
                   dynamicEl.setAttribute('id', x.Name);
                   dynamicEl.setAttribute('label', x.Name);
                   dynamicEl.setAttribute('required', x.Required);
-                  dynamicEl.setAttribute('value', parent.GetValueKey(x.Name));
                   parent.$.ironFormElements.appendChild(dynamicEl);
               } 
               else if(x.IsDropdown)
@@ -103,24 +100,27 @@
 
                   dynDropDown.setAttribute('display-key', 'Name');   
                   dynDropDown.setAttribute('value-key', 'Id');
-                  //dynDropDown.setAttribute('init-value', );
-                  
+
                   var drpIndex = _.findIndex(parent.dropDownConfig, 'Name', x.DropdownName);
                   if(drpIndex >= 0)
                   { 
-                    dynDropDown.data = parent.dropDownConfig[drpIndex].Data;
-                    //dynDropDown.initValue = parent.GetValueKey(x.Name);
+                    var conf = parent.dropDownConfig[drpIndex];
+                    if(conf.Url)
+                    {
+                        var dynAjax = document.createElement('pc-ajax');
+                        dynAjax.setAttribute('url', conf.Url); 
+                        dynAjax.MakeCall(true, function(da){
+                          dynDropDown.data = da;  
+                        });
+                    }
+                    else
+                    {
+                        dynDropDown.data = conf.Data;  
+                    }
+                    
                   }
-                  //dynDropDown['selected-data'] = parent.GetValueKey(x.Name);
-
                   parent.$.ironFormElements.appendChild(dynDropDown);
-  
-                  //todo: dynamic dropdown
-                  // <template is="dom-if" if="{{item.IsDropdown}}">      
-                  //     <pc-dropdown id="{{item.Name}}" display-key="Name" value-key="Id" label="{{item.Text}}" data="{{cities}}"></pc-dropdown>
-                  // </template>
               }
-              //document.querySelector('#' + x.Name).value = newVal[x.Name]; 
           });
 
           this.$.ajxData.generateRequest();

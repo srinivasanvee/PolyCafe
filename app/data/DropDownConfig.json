@@ -1,6 +1,6 @@
 [
 	{
-		"Name": "City",
+		"Name": "CityTemp",
 		"DisplayKey": "Name",
 		"ValueKey": "Id",
 		"Label": "City",
@@ -18,5 +18,12 @@
 				"Name": "LA"
 			}
 		]
+	},
+	{
+		"Name": "City",
+		"DisplayKey": "Name",
+		"ValueKey": "Id",
+		"Label": "City",
+		"Url": "../../data/cities.json"
 	}
 ]

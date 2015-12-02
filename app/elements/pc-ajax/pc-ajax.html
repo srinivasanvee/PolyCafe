@@ -49,8 +49,7 @@
             params: {},
             body: {},
             response: {  
-              notify: true,
-              observer: 'TestMyIron'
+              notify: true
             },
             errorData: {
               notify: true,
@@ -59,6 +58,7 @@
             loading: {
               observer: 'HandleLoading'
             },
+            successCallback: { value: null },
             successEvent: { value: null, type: String }
         },
         HandleLoading: function(newVal) {
@@ -70,23 +70,29 @@
         handleResponse: function(res) {
           if(res.detail.status === 200)
           { 
-            if(this.successEvent) this.fire(this.successEvent);         
-            console.log(res.detail.status)
+            if(this.successCallback)
+            {
+              this.successCallback(this.response);
+            }  
+            if(this.successEvent)
+            { 
+              this.fire(this.successEvent);
+            }         
+            console.log(res.detail.status);
           }
         },
         ready: function()
         { 
           this.MakeCall(this.auto);
         },
-        MakeCall: function(val)
+        MakeCall: function(val, callback)
         { 
-          if(val === false) return;  
-          var irn =  this.$.ironEnv; 
-          irn.generateRequest(); 
-        },
-        TestMyIron: function(newVal, oldVal)
-        {
-            //console.log("Ajax response - " + JSON.stringify(newVal));
+          this.successCallback = callback;
+          
+          if(val)
+          {   
+            this.$.ironEnv.generateRequest(); 
+          } 
         },
         ToastError: function(error)
         { 

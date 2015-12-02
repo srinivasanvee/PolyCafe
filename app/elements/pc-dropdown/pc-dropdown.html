@@ -3,7 +3,7 @@
 <dom-module id="pc-dropdown">
   <template>
     <paper-dropdown-menu label="{{label}}"> 
-      <paper-menu id="ccdropdown" class="dropdown-content" selected="{{selectedData}}" attr-for-selected="key">
+      <paper-menu id="ccdropdown" class="dropdown-content" selected="{{value}}" attr-for-selected="key">
         <template is="dom-repeat" items="{{data}}">
             <paper-item key="{{GetValueKey(item)}}">{{GetDisplayText(item)}}</paper-item>
 		    </template>
@@ -17,26 +17,26 @@
       Polymer({
         is: 'pc-dropdown',
           properties: {
-              selectedData: {
+              value: {
                 type: String,
                 notify: true
               },
-              data: {
-                observer: 'SetInitValue'
-              },
-              value: {},
+              data: {},
               label: {},
               displayKey: {}, 
               valueKey: {},
               appendKey: { value: false }
           },
+          PrintMe: function(val) {
+            console.log(val);
+          },
           GetValueKey: function(obj)
           {
             return obj[this.valueKey];
           },
-          SetInitValue: function()
+          SetInitValue: function(val)
           {
-             if(this.initValue)  { this.selectedData = this.value; }
+            console.log(val);
           }, 
           GetDisplayText: function(obj) 
           {
