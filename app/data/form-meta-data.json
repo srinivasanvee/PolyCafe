@@ -3,13 +3,13 @@
 		{
 			"Name": "Name",
 			"Text": "Name",
-			"Required": "required",
+			"Required": true,
 			"ElementType": "Text"
 		},
 		{
 			"Name": "CityId",
 			"Text": "City",
-			"Required": "required",
+			"Required": true,
 			"ElementType": "Dropdown",
 			"DropdownName": "City"
 		},
@@ -17,8 +17,7 @@
 			"Name": "Phone",
 			"Text": "Phone",
 			"ElementType": "Text",
-			"Hidable": true,
-			"Hidden": true
+			"Required": false
 		},
 		{
 			"Name": "Active",
@@ -30,11 +29,12 @@
 		{
 			"Name": "BirthDate",
 			"Text": "Birth Date",
+			"Required": true,
 			"ElementType": "Date",
 			"Hidable": true,
 			"Hidden": true
 		}
 	],
-	"Header": "Test Header for Vaadin Grid",
+	"Header": "Customer",
 	"VisibleRows": 3
 }

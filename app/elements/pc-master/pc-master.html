@@ -1,0 +1,29 @@
+<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+
+<dom-module id="pc-master">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <pc-grid-main></pc-grid-main>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'pc-master',
+
+      properties: {
+        foo: {
+          type: String,
+          value: 'pc-master',
+          notify: true
+        }
+      }
+    });
+  })();
+  </script>
+</dom-module>

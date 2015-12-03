@@ -53,32 +53,32 @@
           var ind = grid.selection.selected();
           this.selectedItem = grid.items[ind];
         } 
-      },
+      }, 
 
       metaDataUpate: function(newVal) {
-        var grid = this.$.idVadinGrid;
-
+        var vgrid = this.$.idVadinGrid;
+        
         _.each(newVal.Fields, function(mdata){
-          grid.addColumn( {headerContent: mdata.Name, 
+          vgrid.addColumn( {headerContent: mdata.Name, 
                            name: mdata.Text,
                            hidable: mdata.Hidable, 
                            hidden: mdata.Hidden,
-                           sortable: true,
+                           sortable: mdata.Sortable,
                            direction: 'desc' });
         });
         
-        grid.frozenColumns = 1;
-        grid.visibleRows = newVal.VisibleRows; 
-        grid.sortOrder = [{column: 0, direction: 'desc'}, {column: 1, direction: 'asc'}];
-        
-        grid.addEventListener('sort-order-changed', function() {
-          var idx = grid.sortOrder[0].column;
-          var lesser = grid.sortOrder[0].direction === 'asc' ? -1 : 1;
-          var items = this.parentNode.gridItems;
-          items.sort(function(a, b) {
-            return (a[idx] < b[idx]) ? lesser : -lesser;
-          });
-        });
+        vgrid.frozenColumns = 1;
+        // vgrid.visibleRows = newVal.VisibleRows; 
+        // vgrid.sortOrder = [{column: 0, direction: 'desc'}, {column: 1, direction: 'asc'}];
+        // 
+        // vgrid.addEventListener('sort-order-changed', function() {
+        //   var idx = vgrid.sortOrder[0].column;
+        //   var lesser = vgrid.sortOrder[0].direction === 'asc' ? -1 : 1;
+        //   var items = this.parentNode.gridItems;
+        //   items.sort(function(a, b) {
+        //     return (a[idx] < b[idx]) ? lesser : -lesser;
+        //   });
+        // });
       }
 
     });

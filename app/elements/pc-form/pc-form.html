@@ -10,14 +10,14 @@
 
     <iron-ajax id="ajxData" url="../../data/test-form-data.json" last-response="{{formData}}"></iron-ajax>
     
-    <div>{{formMetaData.Header}}</span>
-    </div> 
+    <h2>{{formMetaData.Header}}</h2> 
 
     <form is="iron-form" id="ironForm">
       <div id="ironFormElements">
       </div>
       <br>
-      <paper-button raised on-click="submitForm">Submit</paper-button>
+      <paper-button raised on-click="submitForm">{{submitText}}</paper-button>
+      <paper-button raised>Cancel</paper-button>
     </form>
 
   </template>
@@ -36,6 +36,9 @@
           observer: 'updateFormData'
         },
         dropDownConfig: {
+        },
+        submitText: {
+          computed: '_submitText(formData)'
         }
       },
       GetValueKey: function(name)
@@ -44,8 +47,8 @@
           return this.formData[name];
         }
       },
-      SubmitText: function() {
-        if(this.formData && this.formData.Id) { 
+      _submitText: function(da) {
+        if(da && da.Id) { 
           return 'Update';
         }
         else {
@@ -73,7 +76,14 @@
                     var obj = document.querySelector('#' + x.Name);
                     if(obj)
                     {
-                      dat[x.Name] = obj.value;
+                      if(x.ElementType === 'Date')
+                      {
+                        dat[x.Name] = obj.children.dateControl.value;
+                      }
+                      else
+                      { 
+                        dat[x.Name] = obj.value;
+                      }
                     }
               });
               console.log(JSON.stringify(dat));
@@ -92,21 +102,27 @@
           var dynamicEl = document.createElement('paper-input');
           dynamicEl.setAttribute('id', x.Name);
           dynamicEl.setAttribute('label', x.Text);
-          dynamicEl.setAttribute('required', x.Required);
+          if(x.Required) {
+            dynamicEl.setAttribute('required', x.Required);
+          }
           this.$.ironFormElements.appendChild(dynamicEl);
       }, 
       addDateElement: function(x) {
         var dynamicEl = document.createElement('pc-date-picker');
         dynamicEl.setAttribute('id', x.Name);
         dynamicEl.setAttribute('label', x.Text);
-        dynamicEl.setAttribute('required', x.Required);
+        if(x.Required) {
+          dynamicEl.setAttribute('required', x.Required);
+        }
         this.$.ironFormElements.appendChild(dynamicEl);
       },
       addDropdownElement: function(x) {
           var dynDropDown = document.createElement('pc-dropdown');
           dynDropDown.setAttribute('id', x.Name);
           dynDropDown.setAttribute('label', x.Text);
-          dynDropDown.setAttribute('required', x.Required);
+          if(x.Required) {
+            dynDropDown.setAttribute('required', x.Required);
+          }
 
           dynDropDown.setAttribute('display-key', 'Name');   
           dynDropDown.setAttribute('value-key', 'Id');
@@ -157,7 +173,6 @@
                 }
               }
           });
-
           this.$.ajxData.generateRequest();
       }
     });
