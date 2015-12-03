@@ -4,19 +4,33 @@
 			"Name": "Name",
 			"Text": "Name",
 			"Required": "required",
-			"IsText": true
+			"ElementType": "Text"
 		},
 		{
 			"Name": "CityId",
 			"Text": "City",
 			"Required": "required",
-			"IsDropdown": true,
+			"ElementType": "Dropdown",
 			"DropdownName": "City"
 		},
 		{
 			"Name": "Phone",
 			"Text": "Phone",
-			"IsText": true,
+			"ElementType": "Text",
+			"Hidable": true,
+			"Hidden": true
+		},
+		{
+			"Name": "Active",
+			"Text": "Active",
+			"ElementType": "Checkbox",
+			"Hidable": true,
+			"Hidden": true
+		},
+		{
+			"Name": "BirthDate",
+			"Text": "Birth Date",
+			"ElementType": "Date",
 			"Hidable": true,
 			"Hidden": true
 		}

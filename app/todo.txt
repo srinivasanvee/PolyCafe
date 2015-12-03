@@ -1,5 +1,5 @@
 date element
-checkbox
+upgrade to 1.2
 data store
 run tests
 grid searchable by text

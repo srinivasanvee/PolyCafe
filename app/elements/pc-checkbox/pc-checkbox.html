@@ -1,0 +1,27 @@
+<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+
+<dom-module id="pc-checkbox">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <paper-checkbox id="{{id}}" checked="{{value}}">{{label}}</paper-checkbox>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'pc-checkbox',
+
+      properties: {
+        value: { notify: true },
+        label: {},
+        id: {}
+      }
+    });
+  })();
+  </script>
+</dom-module>

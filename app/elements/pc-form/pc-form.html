@@ -7,7 +7,7 @@
         display: block;
       }
     </style>
-    
+
     <iron-ajax id="ajxData" url="../../data/test-form-data.json" last-response="{{formData}}"></iron-ajax>
     
     <div>{{formMetaData.Header}}</span>
@@ -76,50 +76,85 @@
                       dat[x.Name] = obj.value;
                     }
               });
-              
               console.log(JSON.stringify(dat));
           }
+      },
+      addCheckboxElement: function(x) {
+          var line = document.createElement('br');
+          this.$.ironFormElements.appendChild(line);
+          
+          var dynamicEl = document.createElement('pc-checkbox');
+          dynamicEl.setAttribute('id', x.Name);
+          dynamicEl.setAttribute('label', x.Text);
+          this.$.ironFormElements.appendChild(dynamicEl);
+      },
+      addTextElement: function(x) {
+          var dynamicEl = document.createElement('paper-input');
+          dynamicEl.setAttribute('id', x.Name);
+          dynamicEl.setAttribute('label', x.Text);
+          dynamicEl.setAttribute('required', x.Required);
+          this.$.ironFormElements.appendChild(dynamicEl);
+      }, 
+      addDateElement: function(x) {
+        var dynamicEl = document.createElement('pc-date-picker');
+        dynamicEl.setAttribute('id', x.Name);
+        dynamicEl.setAttribute('label', x.Text);
+        dynamicEl.setAttribute('required', x.Required);
+        this.$.ironFormElements.appendChild(dynamicEl);
+      },
+      addDropdownElement: function(x) {
+          var dynDropDown = document.createElement('pc-dropdown');
+          dynDropDown.setAttribute('id', x.Name);
+          dynDropDown.setAttribute('label', x.Text);
+          dynDropDown.setAttribute('required', x.Required);
+
+          dynDropDown.setAttribute('display-key', 'Name');   
+          dynDropDown.setAttribute('value-key', 'Id');
+
+          var drpIndex = _.findIndex(this.dropDownConfig, 'Name', x.DropdownName);
+          if(drpIndex >= 0)
+          { 
+            var conf = this.dropDownConfig[drpIndex];
+            if(conf.Url)
+            {
+                var dynAjax = document.createElement('pc-ajax');
+                dynAjax.setAttribute('url', conf.Url); 
+                dynAjax.MakeCall(true, function(da){
+                  dynDropDown.data = da;  
+                });
+            }
+            else
+            {
+                dynDropDown.data = conf.Data;  
+            }
+          }
+          this.$.ironFormElements.appendChild(dynDropDown);
       },
       handleMetaData: function() {
           var parent = this;
           _.each(this.formMetaData.Fields, function(x) {
-              if(x.IsText)
-              { 
-                  var dynamicEl = document.createElement('paper-input');
-                  dynamicEl.setAttribute('id', x.Name);
-                  dynamicEl.setAttribute('label', x.Name);
-                  dynamicEl.setAttribute('required', x.Required);
-                  parent.$.ironFormElements.appendChild(dynamicEl);
-              } 
-              else if(x.IsDropdown)
+              switch(x.ElementType)
               {
-                  var dynDropDown = document.createElement('pc-dropdown');
-                  dynDropDown.setAttribute('id', x.Name);
-                  dynDropDown.setAttribute('label', x.Text);
-                  dynDropDown.setAttribute('required', x.Required);
-
-                  dynDropDown.setAttribute('display-key', 'Name');   
-                  dynDropDown.setAttribute('value-key', 'Id');
-
-                  var drpIndex = _.findIndex(parent.dropDownConfig, 'Name', x.DropdownName);
-                  if(drpIndex >= 0)
-                  { 
-                    var conf = parent.dropDownConfig[drpIndex];
-                    if(conf.Url)
-                    {
-                        var dynAjax = document.createElement('pc-ajax');
-                        dynAjax.setAttribute('url', conf.Url); 
-                        dynAjax.MakeCall(true, function(da){
-                          dynDropDown.data = da;  
-                        });
-                    }
-                    else
-                    {
-                        dynDropDown.data = conf.Data;  
-                    }
-                    
-                  }
-                  parent.$.ironFormElements.appendChild(dynDropDown);
+                case 'Text':
+                {
+                    parent.addTextElement(x);
+                    break;
+                }
+                case 'Dropdown':
+                {
+                    parent.addDropdownElement(x);
+                    break;
+                }
+                case 'Checkbox':
+                {
+                    parent.addCheckboxElement(x);
+                    break;
+                }
+                case 'Date':
+                {
+                    parent.addDateElement(x);
+                    break;
+                }
               }
           });
 

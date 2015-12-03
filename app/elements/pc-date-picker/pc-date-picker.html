@@ -1,0 +1,30 @@
+
+<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+
+<dom-module id="pc-date-picker">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <br>
+    <div class="paper-input-label">{{label}}</div>
+    <input type="date" id="{{id}}"/>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'pc-date-picker',
+
+      properties: {
+        label: {},
+        value: {},
+        id: {}
+      }
+    });
+  })();
+  </script>
+</dom-module>
