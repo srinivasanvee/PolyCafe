@@ -7,15 +7,11 @@
         display: block;
       }
     </style>
-    <div>{{gridMetaData.Header}}</span></div>
+    <h2>{{metaData.Header}} List</h2>
 
-    <iron-ajax url="../../data/form-meta-data.json" last-response="{{gridMetaData}}" auto></iron-ajax>
-    <iron-ajax id="ajxData" url="../../data/test-grid-data.json" last-response="{{gridItems}}"></iron-ajax>
-    
-    <pc-grid grid-meta-data="{{gridMetaData}}" 
-              grid-items="{{gridItems}}"
-              selected-item="{{selectedItem}}"></pc-grid>
-
+    <pc-grid meta-data="{{metaData}}" 
+             grid-items="{{gridItems}}"
+             selected-item="{{selectedItem}}"></pc-grid>
   </template>
   <script>
   (function() {
@@ -25,20 +21,12 @@
       is: 'pc-grid-main',
       
       properties: {
-        gridMetaData: {
-          observer: 'makeDataCall'
-        },
+        metaData: {},
         gridItems: {
         },
         selectedItem: {
-          observer: 'selectionChanged'
+          notify: true
         } 
-      },
-      selectionChanged: function(newVal) {
-        console.log(newVal);
-      },
-      makeDataCall: function() {
-        this.$.ajxData.generateRequest();
       }
     });
   })();

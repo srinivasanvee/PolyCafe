@@ -8,10 +8,8 @@
       }
     </style>
   
-    <pc-ajax url="../../data/DropDownConfig.json" response="{{dropDownConfig}}" auto></pc-ajax>
-    <pc-ajax url="../../data/form-meta-data.json" response="{{formMetaData}}" auto></pc-ajax>
-    <pc-form drop-down-config="{{dropDownConfig}}" form-meta-data="{{formMetaData}}"></pc-form>
-
+    <pc-form drop-down-config="{{dropDownConfig}}" meta-data="{{metaData}}" form-event="{{formEvent}}" form-data="{{formData}}"></pc-form>
+    
   </template>
   <script>
   (function() {
@@ -24,7 +22,11 @@
           type: String,
           value: 'pc-form-main',
           notify: true
-        }
+        },
+        formEvent: { notify: true },
+        dropDownConfig: {},
+        metaData: {},
+        formData: {}
       }
     });
   })();

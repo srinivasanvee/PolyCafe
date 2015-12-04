@@ -8,16 +8,14 @@
       }
     </style>
 
-    <iron-ajax id="ajxData" url="../../data/test-form-data.json" last-response="{{formData}}"></iron-ajax>
-    
-    <h2>{{formMetaData.Header}}</h2> 
+    <h2>{{metaData.Header}}</h2> 
 
     <form is="iron-form" id="ironForm">
       <div id="ironFormElements">
       </div>
       <br>
-      <paper-button raised on-click="submitForm">{{submitText}}</paper-button>
-      <paper-button raised>Cancel</paper-button>
+      <paper-button raised on-click="submitForm">{{submitText}}{{getSubmitText()}}</paper-button>
+      <paper-button raised on-click="onCancelClick">Cancel</paper-button>
     </form>
 
   </template>
@@ -29,7 +27,7 @@
       is: 'pc-form',
       
       properties: {
-        formMetaData: {
+        metaData: {
           observer: 'handleMetaData'
         },
         formData: {
@@ -39,6 +37,19 @@
         },
         submitText: {
           computed: '_submitText(formData)'
+        },
+        formEvent: {
+          notify: true
+        }
+      },
+      onCancelClick: function() {
+        this.formEvent = 'Cancel';
+      },
+      getSubmitText: function()
+      {
+        if(this.formData === null)
+        {
+          return 'Add';
         }
       },
       GetValueKey: function(name)
@@ -56,9 +67,9 @@
         } 
       }, 
       updateFormData: function(newVal) {
-        if(newVal)
+        if(newVal && this.metaData)
         { 
-          _.each(this.formMetaData.Fields, function(x) {
+          _.each(this.metaData.Fields, function(x) {
               document.querySelector('#' + x.Name).value = newVal[x.Name]; 
           });
         }
@@ -72,7 +83,7 @@
           var validate = this.$.ironForm.validate();
           if(validate)
           {
-              _.each(this.formMetaData.Fields, function(x) {
+              _.each(this.metaData.Fields, function(x) {
                     var obj = document.querySelector('#' + x.Name);
                     if(obj)
                     {
@@ -148,7 +159,7 @@
       },
       handleMetaData: function() {
           var parent = this;
-          _.each(this.formMetaData.Fields, function(x) {
+          _.each(this.metaData.Fields, function(x) {
               switch(x.ElementType)
               {
                 case 'Text':
@@ -173,7 +184,6 @@
                 }
               }
           });
-          this.$.ajxData.generateRequest();
       }
     });
   })();

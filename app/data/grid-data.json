@@ -2,27 +2,31 @@
 	{
 		"Name": "Srini",
 		"Phone": 11111111,
+		"CityId": 3,
 		"City": "LA",
 		"Active": true,
-		"BirthDate": ""
+		"BirthDate": "2015-12-17"
 	},
 	{
 		"Name": "Dhina",
-		"Value": 6666666,
+		"Phone": 6666666,
+		"CityId": 2,
 		"City": "Chennai",
 		"Active": true,
-		"BirthDate": ""
+		"BirthDate": "2015-12-17"
 	},
 	{
 		"Name": "Ananth",
-		"Value": 4444444,
+		"Phone": 4444444,
 		"City": "Karur",
 		"Active": true,
+		"CityId": 1,
 		"BirthDate": ""
 	},
 	{
 		"Name": "Thilak",
-		"Value": 3333333,
+		"Phone": 3333333,
+		"CityId": 4,
 		"City": "Hyderabad",
 		"Active": false,
 		"BirthDate": ""

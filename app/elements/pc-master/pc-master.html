@@ -7,21 +7,47 @@
         display: block;
       }
     </style>
-    <pc-grid-main></pc-grid-main>
+    
+    <iron-ajax url="../../data/meta-data.json" last-response="{{metaData}}" auto></iron-ajax>
+    <iron-ajax url="../../data/grid-data.json" last-response="{{gridItems}}" auto></iron-ajax>
+    
+    <pc-ajax url="../../data/drop-down-config.json" response="{{dropDownConfig}}" auto></pc-ajax>
+    
+    <!--<template is="dom-if" if="{{selectedItem}}">-->
+    <paper-dialog id="frmDialog">    
+        <pc-form-main form-event="{{formEvent}}" drop-down-config="{{dropDownConfig}}" meta-data="{{metaData}}" form-data="{{formData}}"></pc-form-main>
+    </paper-dialog>
+    <!--</template>-->
+    
+    <pc-grid-main meta-data="{{metaData}}" grid-items="{{gridItems}}" selected-item="{{selectedItem}}"></pc-grid-main>
+    
   </template>
   <script>
   (function() {
     'use strict';
-
+  
     Polymer({
       is: 'pc-master',
 
       properties: {
-        foo: {
-          type: String,
-          value: 'pc-master',
-          notify: true
+        selectedItem: {
+           observer: '_selectedItemChanged'
+        },
+        formData: {},
+        formEvent: { observer: '_handleFormEvent'}
+      },
+      _handleFormEvent: function(x) {
+        if(x === 'Cancel')
+        {
+          this.selectedItem = null;
+          this.formEvent = '';
+          this.$.frmDialog.close();
         }
+      },
+      _selectedItemChanged: function(x) {
+        this.formData = x;
+        console.log(x);
+        this.$.frmDialog.open();
       }
     });
   })();

@@ -1,5 +1,6 @@
 upgrade to 1.2
 data store
+grid city, cityid both in grid data
 run tests
 grid searchable by text
 grid sortable

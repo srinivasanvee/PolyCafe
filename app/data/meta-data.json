@@ -30,9 +30,7 @@
 			"Name": "BirthDate",
 			"Text": "Birth Date",
 			"Required": true,
-			"ElementType": "Date",
-			"Hidable": true,
-			"Hidden": true
+			"ElementType": "Date"
 		}
 	],
 	"Header": "Customer",

@@ -29,7 +29,7 @@
           value: 'pc-grid',
           notify: true
         },
-        gridMetaData: {
+        metaData: {
           observer: 'metaDataUpate'
         },
         gridItems: { 
@@ -59,8 +59,13 @@
         var vgrid = this.$.idVadinGrid;
         
         _.each(newVal.Fields, function(mdata){
-          vgrid.addColumn( {headerContent: mdata.Name, 
-                           name: mdata.Text,
+          var name = mdata.Name;
+          if(mdata.ElementType === 'Dropdown')
+          {
+            name = mdata.DropdownName;
+          }
+          vgrid.addColumn( {headerContent: mdata.Text, 
+                           name: name,
                            hidable: mdata.Hidable, 
                            hidden: mdata.Hidden,
                            sortable: mdata.Sortable,
