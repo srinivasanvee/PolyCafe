@@ -17,33 +17,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
     <ul>
-      <template is="dom-repeat" items="{{items}}">
-        <li><span class="paper-font-body1">{{item}}</span></li>
+      <template is="dom-repeat" items="{{items.cities}}">
+        <li><span class="paper-font-body1">{{item}}</span></li> 
       </template>
     </ul>
+    <paper-button on-click='addItem'>Add Item</paper-button>
   </template>
 
   <script>
-    (function () {
+    (function () { 
       'use strict';
-
+      
       Polymer({
         is: 'my-list',
         properties: {
           items: {
-            type: Array,
             notify: true,
+            value: {}, 
+            observer: '_itemAdded'
+          },
+          myval: {
+            observer: '_variableUpdate'
           }
         },
+        addItem: function() {
+          this.push('items', {'cities': [ 'SFO' ]});
+          //this.myval = "Random Value" + new Date();
+        },
+        _variableUpdate: function(val) {
+          console.log(val);
+        },
+        _itemAdded: function(itm) {
+          console.log(itm.cities);
+          console.log(JSON.stringify(itm));
+        },
         ready: function() {
-          this.items = [
-            'Responsive Web App boilerplate',
-            'Iron Elements and Paper Elements',
-            'End-to-end Build Tooling (including Vulcanize)',
-            'Unit testing with Web Component Tester',
-            'Routing with Page.js',
-            'Offline support with the Platinum Service Worker Elements'
-          ];
+          // items.cities = []; 
+          // this.push('items', {'cities': cities});
+          // this.items = [
+          //   'Responsive Web App boilerplate',
+          //   'Iron Elements and Paper Elements',
+          // ];
         }
       });
     })();

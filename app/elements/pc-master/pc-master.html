@@ -10,14 +10,11 @@
     
     <iron-ajax url="../../data/meta-data.json" last-response="{{metaData}}" auto></iron-ajax>
     <iron-ajax url="../../data/grid-data.json" last-response="{{gridItems}}" auto></iron-ajax>
-    
     <pc-ajax url="../../data/drop-down-config.json" response="{{dropDownConfig}}" auto></pc-ajax>
     
-    <!--<template is="dom-if" if="{{selectedItem}}">-->
-    <paper-dialog id="frmDialog">    
-        <pc-form-main form-event="{{formEvent}}" drop-down-config="{{dropDownConfig}}" meta-data="{{metaData}}" form-data="{{formData}}"></pc-form-main>
+    <paper-dialog id="frmDialog">
+        <pc-form-main id="frmMain" form-event="{{formEvent}}" drop-down-config="{{dropDownConfig}}" meta-data="{{metaData}}" form-data="{{formData}}"></pc-form-main>
     </paper-dialog>
-    <!--</template>-->
     
     <pc-grid-main meta-data="{{metaData}}" grid-items="{{gridItems}}" selected-item="{{selectedItem}}"></pc-grid-main>
     
@@ -33,8 +30,42 @@
         selectedItem: {
            observer: '_selectedItemChanged'
         },
-        formData: {},
-        formEvent: { observer: '_handleFormEvent'}
+        formData: { },
+        formEvent: { observer: '_handleFormEvent'},
+        gridItems: { observer: '_handleGridItemsChange'},
+      },
+      _handleGridItemsChange: function(y) {
+        console.log(y);
+      },
+      guid: function() {
+        function s4() {
+          return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+          s4() + '-' + s4() + s4() + s4();
+      },
+      addItem: function(x) {
+        if(x.Id)
+        {
+          var ind = _.findIndex(this.gridItems, 'Id', x.Id);
+          var itm = this.gridItems[ind];
+          _.assign(itm, x);
+        }
+        else
+        {
+          this.push('gridItems', x);
+        }
+        this.fire('iron-signal', {name: 'updategrid', data: this.gridItems });
+        this.$.frmDialog.close();
+      },
+      ready: function() {
+        console.log(this.guid());
+        var parent = this;
+        this.$.frmMain.addEventListener('add', function(x) {
+            parent.addItem(x.detail);
+        });
       },
       _handleFormEvent: function(x) {
         if(x === 'Cancel')
@@ -46,7 +77,6 @@
       },
       _selectedItemChanged: function(x) {
         this.formData = x;
-        console.log(x);
         this.$.frmDialog.open();
       }
     });

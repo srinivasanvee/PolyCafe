@@ -8,13 +8,27 @@
       }
     </style>
     
-   <vaadin-grid id="idVadinGrid" on-selected-items-changed="onSelect">
-      <table>
-        <colgroup> 
-        </colgroup>
-      </table>
-   </vaadin-grid>
-    
+   <iron-signals on-iron-signal-updategrid="updateGridExternal"></iron-signals>
+   
+   <table class="table table-striped table-bordered table-hover table-condensed">
+      <tbody>
+        <tr>
+          <th></th>
+          <template is="dom-repeat" items="{{metaData.Fields}}">
+              <th>{{item.Text}}</th>
+          </template>
+        </tr>
+        <template id="idTemplate" is="dom-repeat" items="{{gridItems}}" as="gitem">
+          <tr>
+            <td><input type="radio" name="rdoItems" id="{{gitem.Id}}" on-click="onSelect"></td>
+            <template is="dom-repeat" items="{{metaData.Fields}}">
+              <td>{{getItemValue(gitem, item)}}</th>
+            </template>  
+          </tr>
+        </template>
+      </tbody>
+   </table> 
+
   </template>
   <script>
   (function() {
@@ -29,63 +43,37 @@
           value: 'pc-grid',
           notify: true
         },
-        metaData: {
-          observer: 'metaDataUpate'
-        },
         gridItems: { 
-          observer: 'updateGrid',
-          type: Array
+          type: Array,
+          notify: true,
+          observer: '_gridItemsUpdated'
         },
         selectedItem: {
           notify: true
         }
       },
-      
-      updateGrid: function(newVal) {
-          var grid = this.$.idVadinGrid;
-          grid.items = newVal;        
+      _gridItemsUpdated: function(newVal) {
+        console.log('Grid items updated !');
       },
-      
-      onSelect: function(){ 
-        var grid = this.$.idVadinGrid;
-        if(grid && grid.items)
-        { 
-          var ind = grid.selection.selected();
-          this.selectedItem = grid.items[ind];
-        } 
-      }, 
-
-      metaDataUpate: function(newVal) {
-        var vgrid = this.$.idVadinGrid;
-        
-        _.each(newVal.Fields, function(mdata){
-          var name = mdata.Name;
-          if(mdata.ElementType === 'Dropdown')
-          {
-            name = mdata.DropdownName;
-          }
-          vgrid.addColumn( {headerContent: mdata.Text, 
-                           name: name,
-                           hidable: mdata.Hidable, 
-                           hidden: mdata.Hidden,
-                           sortable: mdata.Sortable,
-                           direction: 'desc' });
-        });
-        
-        vgrid.frozenColumns = 1;
-        // vgrid.visibleRows = newVal.VisibleRows; 
-        // vgrid.sortOrder = [{column: 0, direction: 'desc'}, {column: 1, direction: 'asc'}];
-        // 
-        // vgrid.addEventListener('sort-order-changed', function() {
-        //   var idx = vgrid.sortOrder[0].column;
-        //   var lesser = vgrid.sortOrder[0].direction === 'asc' ? -1 : 1;
-        //   var items = this.parentNode.gridItems;
-        //   items.sort(function(a, b) {
-        //     return (a[idx] < b[idx]) ? lesser : -lesser;
-        //   });
-        // });
-      }
-
+      getItemValue: function(obj, meta) {
+        if(meta.ElementType === 'Dropdown')
+        {
+          return obj[meta.DropdownName];
+        }
+        else
+        {
+          return obj[meta.Name];
+        }
+      },     
+      updateGridExternal: function(newVal) {
+          console.log('inside grid !');
+          //this.gridItems = newVal.detail;
+          //this.notifyPath('gridItems', newVal.detail.slice());
+          console.log(this.gridItems);
+      },
+      onSelect: function(val){ 
+          this.selectedItem = val.model.gitem; 
+      } 
     });
   })();
   </script>

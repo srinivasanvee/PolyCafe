@@ -97,8 +97,15 @@
                       }
                     }
               });
-              console.log(JSON.stringify(dat));
+              this.fire('add', dat);
           }
+      },
+      addIdElement: function(x) {
+          var dynamicEl = document.createElement('paper-input');
+          dynamicEl.setAttribute('id', x.Name);
+          dynamicEl.setAttribute('label', x.Text);
+          dynamicEl.setAttribute('readonly', true);
+          this.$.ironFormElements.appendChild(dynamicEl);
       },
       addCheckboxElement: function(x) {
           var line = document.createElement('br');
@@ -180,6 +187,11 @@
                 case 'Date':
                 {
                     parent.addDateElement(x);
+                    break;
+                }
+                case 'Id':
+                {
+                    parent.addIdElement(x);
                     break;
                 }
               }
