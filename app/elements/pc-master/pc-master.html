@@ -16,10 +16,11 @@
         <pc-form-main id="frmMain" form-event="{{formEvent}}" drop-down-config="{{dropDownConfig}}" meta-data="{{metaData}}" form-data="{{formData}}"></pc-form-main>
     </paper-dialog>
     
-    <pc-grid-main meta-data="{{metaData}}" grid-items="{{gridItems}}" selected-item="{{selectedItem}}"></pc-grid-main>
+    <paper-icon-button icon="add" style="float:right" on-click="addNew"></paper-icon-button>
+    <pc-grid-main meta-data="{{metaData}}" grid-items="{{gridItems}}" selected-item="{{selectedItem}}" drop-down-config="{{dropDownConfig}}"></pc-grid-main>
     
   </template>
-  <script>
+  <script> 
   (function() {
     'use strict';
   
@@ -46,6 +47,10 @@
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
           s4() + '-' + s4() + s4() + s4();
       },
+      addNew: function() {
+        this.formData = {};
+        this.$.frmDialog.open();
+      },
       addItem: function(x) {
         if(x.Id)
         {
@@ -55,13 +60,13 @@
         }
         else
         {
+          x.Id = this.guid();
           this.push('gridItems', x);
         }
         this.fire('iron-signal', {name: 'updategrid', data: this.gridItems });
         this.$.frmDialog.close();
       },
       ready: function() {
-        console.log(this.guid());
         var parent = this;
         this.$.frmMain.addEventListener('add', function(x) {
             parent.addItem(x.detail);

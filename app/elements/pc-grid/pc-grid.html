@@ -50,22 +50,29 @@
         },
         selectedItem: {
           notify: true
-        }
+        },
+        dropDownConfig: {},
+        dropDownData: {}
       },
-      _gridItemsUpdated: function(newVal) {
+      _gridItemsUpdated: function() {
         console.log('Grid items updated !');
       },
       getItemValue: function(obj, meta) {
         if(meta.ElementType === 'Dropdown')
         {
-          return obj[meta.DropdownName];
+          //todo: request from URL
+          var ind = _.findIndex(this.dropDownConfig, 'Name', 'CityTemp');
+          var dat = this.dropDownConfig[ind].Data;
+          var val = obj[meta.Name].toString();
+          var datInd = _.findIndex(dat, 'Id', val); 
+          return dat[datInd].Name; 
         }
         else
-        {
+        { 
           return obj[meta.Name];
         }
       },     
-      updateGridExternal: function(newVal) {
+      updateGridExternal: function() {
           console.log('inside grid !');
           //this.gridItems = newVal.detail;
           //this.notifyPath('gridItems', newVal.detail.slice());
