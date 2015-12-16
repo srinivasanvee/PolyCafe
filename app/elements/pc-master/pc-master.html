@@ -9,8 +9,10 @@
     </style>
     
     <iron-ajax url="../../data/meta-data.json" last-response="{{metaData}}" auto></iron-ajax>
-    <iron-ajax url="../../data/grid-data.json" last-response="{{gridItems}}" auto></iron-ajax>
+    <!--<iron-ajax url="../../data/grid-data.json" last-response="{{gridItems}}" auto></iron-ajax>-->
     <pc-ajax url="../../data/drop-down-config.json" response="{{dropDownConfig}}" auto></pc-ajax>
+    
+    <pc-data data="{{gridItems}}" location="https://polycafe.firebaseio.com/customers"></pc-data>
     
     <paper-dialog id="frmDialog">
         <pc-form-main id="frmMain" form-event="{{formEvent}}" drop-down-config="{{dropDownConfig}}" meta-data="{{metaData}}" form-data="{{formData}}"></pc-form-main>

@@ -1,0 +1,682 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\srinivasan_varadhara\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'web-component-tester' ]
+2 info using npm@2.2.0
+3 info using node@v4.2.2
+4 silly cache add args [ 'web-component-tester', null ]
+5 verbose cache add spec web-component-tester
+6 silly cache add parsed spec Result {
+6 silly cache add   raw: 'web-component-tester',
+6 silly cache add   scope: null,
+6 silly cache add   name: 'web-component-tester',
+6 silly cache add   rawSpec: '',
+6 silly cache add   spec: '*',
+6 silly cache add   type: 'range' }
+7 verbose addNamed web-component-tester@*
+8 silly addNamed semver.valid null
+9 silly addNamed semver.validRange *
+10 silly addNameRange { name: 'web-component-tester', range: '*', hasData: false }
+11 silly mapToRegistry name web-component-tester
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry uri https://registry.npmjs.org/web-component-tester
+15 verbose addNameRange registry:https://registry.npmjs.org/web-component-tester not in flight; fetching
+16 verbose request uri https://registry.npmjs.org/web-component-tester
+17 verbose request no auth needed
+18 info attempt registry request try #1 at 2:50:07 PM
+19 verbose request id 467ca758168f3c37
+20 verbose etag "E3WR580QOZK4THZN87KJ5353S"
+21 http request GET https://registry.npmjs.org/web-component-tester
+22 http 304 https://registry.npmjs.org/web-component-tester
+23 silly get cb [ 304,
+23 silly get   { date: 'Tue, 15 Dec 2015 22:50:06 GMT',
+23 silly get     via: '1.1 varnish',
+23 silly get     'cache-control': 'max-age=300',
+23 silly get     etag: '"E3WR580QOZK4THZN87KJ5353S"',
+23 silly get     age: '0',
+23 silly get     connection: 'close',
+23 silly get     'x-served-by': 'cache-sjc3130-SJC',
+23 silly get     'x-cache': 'MISS',
+23 silly get     'x-cache-hits': '0',
+23 silly get     'x-timer': 'S1450219806.544716,VS0,VE190',
+23 silly get     vary: 'Accept' } ]
+24 verbose etag https://registry.npmjs.org/web-component-tester from cache
+25 silly addNameRange number 2 { name: 'web-component-tester', range: '*', hasData: true }
+26 silly addNameRange versions [ 'web-component-tester',
+26 silly addNameRange   [ '0.2.0',
+26 silly addNameRange     '0.3.0',
+26 silly addNameRange     '0.3.2',
+26 silly addNameRange     '0.3.3',
+26 silly addNameRange     '0.4.1',
+26 silly addNameRange     '0.5.1',
+26 silly addNameRange     '0.6.0',
+26 silly addNameRange     '0.6.1',
+26 silly addNameRange     '0.6.2',
+26 silly addNameRange     '0.6.3',
+26 silly addNameRange     '0.7.1',
+26 silly addNameRange     '0.7.3',
+26 silly addNameRange     '0.8.0',
+26 silly addNameRange     '1.0.0',
+26 silly addNameRange     '1.0.1',
+26 silly addNameRange     '1.1.0',
+26 silly addNameRange     '1.1.1',
+26 silly addNameRange     '1.1.2',
+26 silly addNameRange     '1.1.3',
+26 silly addNameRange     '1.1.4',
+26 silly addNameRange     '1.2.0',
+26 silly addNameRange     '1.3.0',
+26 silly addNameRange     '1.4.0',
+26 silly addNameRange     '1.4.1',
+26 silly addNameRange     '1.4.2',
+26 silly addNameRange     '1.4.3',
+26 silly addNameRange     '1.5.0-rc1',
+26 silly addNameRange     '1.5.1',
+26 silly addNameRange     '1.5.2',
+26 silly addNameRange     '1.6.0',
+26 silly addNameRange     '1.6.1',
+26 silly addNameRange     '2.0.0-rc1',
+26 silly addNameRange     '1.6.2',
+26 silly addNameRange     '2.0.0',
+26 silly addNameRange     '2.0.1',
+26 silly addNameRange     '2.0.2',
+26 silly addNameRange     '2.0.3',
+26 silly addNameRange     '2.0.5',
+26 silly addNameRange     '2.2.0',
+26 silly addNameRange     '2.2.1',
+26 silly addNameRange     '2.2.2',
+26 silly addNameRange     '2.2.3',
+26 silly addNameRange     '2.2.4',
+26 silly addNameRange     '2.2.5',
+26 silly addNameRange     '2.2.6',
+26 silly addNameRange     '3.0.7',
+26 silly addNameRange     '3.1.1',
+26 silly addNameRange     '3.1.2',
+26 silly addNameRange     '3.1.3',
+26 silly addNameRange     '3.1.4',
+26 silly addNameRange     '3.1.5',
+26 silly addNameRange     '3.1.6',
+26 silly addNameRange     '3.1.7',
+26 silly addNameRange     '3.2.0',
+26 silly addNameRange     '3.3.0',
+26 silly addNameRange     '3.3.1',
+26 silly addNameRange     '3.3.2',
+26 silly addNameRange     '3.3.3',
+26 silly addNameRange     '3.3.4',
+26 silly addNameRange     '3.3.5',
+26 silly addNameRange     '3.3.6',
+26 silly addNameRange     '3.3.7',
+26 silly addNameRange     '3.3.8',
+26 silly addNameRange     '3.3.9',
+26 silly addNameRange     '3.3.10',
+26 silly addNameRange     '3.3.11',
+26 silly addNameRange     '3.3.12',
+26 silly addNameRange     '3.3.13',
+26 silly addNameRange     '3.3.14',
+26 silly addNameRange     '3.3.15',
+26 silly addNameRange     '3.3.16',
+26 silly addNameRange     '3.3.17',
+26 silly addNameRange     '3.3.18',
+26 silly addNameRange     '3.3.19',
+26 silly addNameRange     '3.3.20',
+26 silly addNameRange     '3.3.21',
+26 silly addNameRange     '3.3.22',
+26 silly addNameRange     '3.3.23',
+26 silly addNameRange     '3.3.24',
+26 silly addNameRange     '3.3.25',
+26 silly addNameRange     '3.3.26',
+26 silly addNameRange     '3.3.27',
+26 silly addNameRange     '3.3.28',
+26 silly addNameRange     '3.3.29',
+26 silly addNameRange     '3.3.30',
+26 silly addNameRange     '3.4.0',
+26 silly addNameRange     '3.4.1',
+26 silly addNameRange     '3.4.2',
+26 silly addNameRange     '4.0.0',
+26 silly addNameRange     '4.0.1' ] ]
+27 verbose addNamed web-component-tester@4.0.1
+28 silly addNamed semver.valid 4.0.1
+29 silly addNamed semver.validRange 4.0.1
+30 silly cache afterAdd web-component-tester@4.0.1
+31 verbose afterAdd C:\Users\srinivasan_varadhara\AppData\Roaming\npm-cache\web-component-tester\4.0.1\package\package.json not in flight; writing
+32 verbose afterAdd C:\Users\srinivasan_varadhara\AppData\Roaming\npm-cache\web-component-tester\4.0.1\package\package.json written
+33 silly install resolved [ { name: 'web-component-tester',
+33 silly install resolved     version: '4.0.1',
+33 silly install resolved     description: 'web-component-tester makes testing your web components a breeze!',
+33 silly install resolved     keywords:
+33 silly install resolved      [ 'browser',
+33 silly install resolved        'grunt',
+33 silly install resolved        'gruntplugin',
+33 silly install resolved        'gulp',
+33 silly install resolved        'polymer',
+33 silly install resolved        'test',
+33 silly install resolved        'testing',
+33 silly install resolved        'web component',
+33 silly install resolved        'web' ],
+33 silly install resolved     homepage: 'https://github.com/Polymer/web-component-tester',
+33 silly install resolved     bugs: { url: 'https://github.com/Polymer/web-component-tester/issues' },
+33 silly install resolved     license: 'BSD-3-Clause',
+33 silly install resolved     repository:
+33 silly install resolved      { type: 'git',
+33 silly install resolved        url: 'git+https://github.com/Polymer/web-component-tester.git' },
+33 silly install resolved     main: 'runner.js',
+33 silly install resolved     bin: { wct: './bin/wct', 'wct-st': './bin/wct-st' },
+33 silly install resolved     files:
+33 silly install resolved      [ 'bin/',
+33 silly install resolved        'data/',
+33 silly install resolved        'runner/',
+33 silly install resolved        'scripts/',
+33 silly install resolved        'tasks/',
+33 silly install resolved        '.bowerrc',
+33 silly install resolved        'bower.json',
+33 silly install resolved        'browser.js',
+33 silly install resolved        'browser.js.map',
+33 silly install resolved        'package.json',
+33 silly install resolved        'LICENSE',
+33 silly install resolved        'README.md',
+33 silly install resolved        'runner.js' ],
+33 silly install resolved     scripts: { test: 'gulp test', build: 'gulp build' },
+33 silly install resolved     dependencies:
+33 silly install resolved      { 'accessibility-developer-tools': '^2.10.0',
+33 silly install resolved        async: '^1.5.0',
+33 silly install resolved        chai: '^3.2.0',
+33 silly install resolved        chalk: '^1.1.1',
+33 silly install resolved        cleankill: '^1.0.0',
+33 silly install resolved        express: '^4.8.5',
+33 silly install resolved        'findup-sync': '^0.2.1',
+33 silly install resolved        glob: '^5.0.15',
+33 silly install resolved        lodash: '^3.0.1',
+33 silly install resolved        mocha: '^2.2.4',
+33 silly install resolved        nomnom: '^1.8.1',
+33 silly install resolved        resolve: '^1.0.0',
+33 silly install resolved        send: '^0.11.1',
+33 silly install resolved        'serve-waterfall': '^1.1.0',
+33 silly install resolved        'server-destroy': '^1.0.1',
+33 silly install resolved        sinon: '^1.11.1',
+33 silly install resolved        'sinon-chai': '^2.6.0',
+33 silly install resolved        'socket.io': '^1.3.7',
+33 silly install resolved        stacky: '^1.3.1',
+33 silly install resolved        'test-fixture': 'github:polymerelements/test-fixture',
+33 silly install resolved        wd: '^0.3.8',
+33 silly install resolved        'update-notifier': '^0.6.0',
+33 silly install resolved        'wct-local': '^2.0.0',
+33 silly install resolved        'wct-sauce': '^1.8.2' },
+33 silly install resolved     optionalDependencies:
+33 silly install resolved      { 'update-notifier': '^0.6.0',
+33 silly install resolved        'wct-local': '^2.0.0',
+33 silly install resolved        'wct-sauce': '^1.8.2' },
+33 silly install resolved     devDependencies:
+33 silly install resolved      { grunt: '^0.4.5',
+33 silly install resolved        gulp: '^3.8.8',
+33 silly install resolved        'gulp-jshint': '^2.0.0',
+33 silly install resolved        'gulp-mocha': '^2.0.0',
+33 silly install resolved        jshint: '^2.8.0',
+33 silly install resolved        'jshint-stylish': '^2.0.1',
+33 silly install resolved        lazypipe: '^1.0.1',
+33 silly install resolved        rollup: '^0.21.2',
+33 silly install resolved        'run-sequence': '^1.0.1' },
+33 silly install resolved     engines: { node: '>= 0.12' },
+33 silly install resolved     gitHead: 'f3965319767e68c0f9b6c2373602b74546583ea3',
+33 silly install resolved     _id: 'web-component-tester@4.0.1',
+33 silly install resolved     _shasum: '2c5ed159664eb0a748ee7f3f2d3051734c358313',
+33 silly install resolved     _from: 'web-component-tester@*',
+33 silly install resolved     _npmVersion: '2.14.7',
+33 silly install resolved     _nodeVersion: '4.2.3',
+33 silly install resolved     _npmUser: { name: 'azakus', email: 'dfreedm2@gmail.com' },
+33 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
+33 silly install resolved     dist:
+33 silly install resolved      { shasum: '2c5ed159664eb0a748ee7f3f2d3051734c358313',
+33 silly install resolved        tarball: 'http://registry.npmjs.org/web-component-tester/-/web-component-tester-4.0.1.tgz' },
+33 silly install resolved     directories: {},
+33 silly install resolved     _resolved: 'https://registry.npmjs.org/web-component-tester/-/web-component-tester-4.0.1.tgz',
+33 silly install resolved     readme: 'ERROR: No README data found!' } ]
+34 info install web-component-tester@4.0.1 into C:\Program Files\nodejs
+35 info installOne web-component-tester@4.0.1
+36 verbose installOne of web-component-tester to C:\Program Files\nodejs not in flight; installing
+37 verbose lock using C:\Users\srinivasan_varadhara\AppData\Roaming\npm-cache\_locks\web-component-tester-4c893d177d8763cd.lock for C:\Program Files\nodejs\node_modules\web-component-tester
+38 silly install write writing web-component-tester 4.0.1 to C:\Program Files\nodejs\node_modules\web-component-tester
+39 silly cache addNamed cb web-component-tester@4.0.1
+40 verbose unbuild node_modules\web-component-tester
+41 info preuninstall web-component-tester@4.0.1
+42 info uninstall web-component-tester@4.0.1
+43 verbose unbuild rmStuff web-component-tester@4.0.1 from C:\Program Files\nodejs\node_modules
+44 verbose gentlyRm verifying that C:\Program Files\nodejs is managed by npm
+45 verbose gentlyRm verifying that C:\Program Files\nodejs is managed by npm
+46 silly isManaged C:\Program Files\nodejs is not inside C:\Program Files\nodejs\node_modules
+47 silly isManaged C:\Program Files\nodejs is not inside C:\Program Files\nodejs\node_modules
+48 silly isManaged C:\Program Files\nodejs is inside C:\Program Files\nodejs
+49 silly gentlyRm C:\Program Files\nodejs is managed by npm
+50 silly gentlyRm C:\Program Files\nodejs\wct.cmd is under C:\Program Files\nodejs
+51 verbose gentlyRm vacuuming C:\Program Files\nodejs\wct.cmd up to C:\Program Files\nodejs
+52 silly isManaged C:\Program Files\nodejs is not inside C:\Program Files\nodejs\node_modules
+53 silly isManaged C:\Program Files\nodejs is not inside C:\Program Files\nodejs\node_modules
+54 silly isManaged C:\Program Files\nodejs is inside C:\Program Files\nodejs
+55 silly gentlyRm C:\Program Files\nodejs is managed by npm
+56 silly gentlyRm C:\Program Files\nodejs\wct-st.cmd is under C:\Program Files\nodejs
+57 verbose gentlyRm vacuuming C:\Program Files\nodejs\wct-st.cmd up to C:\Program Files\nodejs
+58 verbose gentlyRm verifying that C:\Program Files\nodejs is managed by npm
+59 silly isManaged C:\Program Files\nodejs is not inside C:\Program Files\nodejs\node_modules
+60 silly isManaged C:\Program Files\nodejs is not inside C:\Program Files\nodejs\node_modules
+61 silly isManaged C:\Program Files\nodejs is inside C:\Program Files\nodejs
+62 silly gentlyRm C:\Program Files\nodejs is managed by npm
+63 silly gentlyRm C:\Program Files\nodejs\wct is under C:\Program Files\nodejs
+64 verbose gentlyRm vacuuming C:\Program Files\nodejs\wct up to C:\Program Files\nodejs
+65 verbose gentlyRm verifying that C:\Program Files\nodejs is managed by npm
+66 silly isManaged C:\Program Files\nodejs is not inside C:\Program Files\nodejs\node_modules
+67 silly isManaged C:\Program Files\nodejs is not inside C:\Program Files\nodejs\node_modules
+68 silly isManaged C:\Program Files\nodejs is inside C:\Program Files\nodejs
+69 silly gentlyRm C:\Program Files\nodejs is managed by npm
+70 silly gentlyRm C:\Program Files\nodejs\wct-st is under C:\Program Files\nodejs
+71 verbose gentlyRm vacuuming C:\Program Files\nodejs\wct-st up to C:\Program Files\nodejs
+72 info postuninstall web-component-tester@4.0.1
+73 verbose gentlyRm vacuuming C:\Program Files\nodejs\node_modules\web-component-tester
+74 silly gentlyRm purging C:\Program Files\nodejs\node_modules\web-component-tester
+75 silly gentlyRm quitting because other entries in C:\Program Files\nodejs\node_modules
+76 verbose tar unpack C:\Users\srinivasan_varadhara\AppData\Roaming\npm-cache\web-component-tester\4.0.1\package.tgz
+77 verbose tar unpacking to C:\Program Files\nodejs\node_modules\web-component-tester
+78 verbose gentlyRm vacuuming C:\Program Files\nodejs\node_modules\web-component-tester
+79 silly gunzTarPerm modes [ '777', '666' ]
+80 silly gunzTarPerm extractEntry package.json
+81 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+82 silly gunzTarPerm extractEntry README.md
+83 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+84 silly gunzTarPerm extractEntry LICENSE
+85 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+86 silly gunzTarPerm extractEntry browser.js
+87 silly gunzTarPerm modified mode [ 'browser.js', 420, 438 ]
+88 silly gunzTarPerm extractEntry runner.js
+89 silly gunzTarPerm modified mode [ 'runner.js', 420, 438 ]
+90 silly gunzTarPerm extractEntry bin/wct
+91 silly gunzTarPerm modified mode [ 'bin/wct', 493, 511 ]
+92 silly gunzTarPerm extractEntry bin/wct-st
+93 silly gunzTarPerm modified mode [ 'bin/wct-st', 493, 511 ]
+94 silly gunzTarPerm extractEntry bower.json
+95 silly gunzTarPerm modified mode [ 'bower.json', 420, 438 ]
+96 silly gunzTarPerm extractEntry browser.js.map
+97 silly gunzTarPerm modified mode [ 'browser.js.map', 420, 438 ]
+98 silly gunzTarPerm extractEntry data/a11ySuite.js
+99 silly gunzTarPerm modified mode [ 'data/a11ySuite.js', 420, 438 ]
+100 silly gunzTarPerm extractEntry data/index.html
+101 silly gunzTarPerm modified mode [ 'data/index.html', 420, 438 ]
+102 silly gunzTarPerm extractEntry tasks/test.js
+103 silly gunzTarPerm modified mode [ 'tasks/test.js', 420, 438 ]
+104 silly gunzTarPerm extractEntry CHANGELOG.md
+105 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 420, 438 ]
+106 silly gunzTarPerm extractEntry runner/browserrunner.js
+107 silly gunzTarPerm modified mode [ 'runner/browserrunner.js', 420, 438 ]
+108 silly gunzTarPerm extractEntry runner/clireporter.js
+109 silly gunzTarPerm modified mode [ 'runner/clireporter.js', 420, 438 ]
+110 silly gunzTarPerm extractEntry runner/config.js
+111 silly gunzTarPerm modified mode [ 'runner/config.js', 420, 438 ]
+112 silly gunzTarPerm extractEntry runner/context.js
+113 silly gunzTarPerm modified mode [ 'runner/context.js', 420, 438 ]
+114 silly gunzTarPerm extractEntry runner/gulp.js
+115 silly gunzTarPerm modified mode [ 'runner/gulp.js', 420, 438 ]
+116 silly gunzTarPerm extractEntry runner/cli.js
+117 silly gunzTarPerm modified mode [ 'runner/cli.js', 420, 438 ]
+118 silly gunzTarPerm extractEntry runner/plugin.js
+119 silly gunzTarPerm modified mode [ 'runner/plugin.js', 420, 438 ]
+120 silly gunzTarPerm extractEntry runner/port-scanner.js
+121 silly gunzTarPerm modified mode [ 'runner/port-scanner.js', 420, 438 ]
+122 silly gunzTarPerm extractEntry runner/steps.js
+123 silly gunzTarPerm modified mode [ 'runner/steps.js', 420, 438 ]
+124 silly gunzTarPerm extractEntry runner/test.js
+125 silly gunzTarPerm modified mode [ 'runner/test.js', 420, 438 ]
+126 silly gunzTarPerm extractEntry runner/webserver.js
+127 silly gunzTarPerm modified mode [ 'runner/webserver.js', 420, 438 ]
+128 silly gunzTarPerm extractEntry runner/paths.js
+129 silly gunzTarPerm modified mode [ 'runner/paths.js', 420, 438 ]
+130 silly gunzTarPerm extractEntry .bowerrc
+131 silly gunzTarPerm modified mode [ '.bowerrc', 420, 438 ]
+132 info preinstall web-component-tester@4.0.1
+133 silly prepareForInstallMany adding accessibility-developer-tools@^2.10.0 from web-component-tester dependencies
+134 silly prepareForInstallMany adding async@^1.5.0 from web-component-tester dependencies
+135 silly prepareForInstallMany adding chai@^3.2.0 from web-component-tester dependencies
+136 silly prepareForInstallMany adding chalk@^1.1.1 from web-component-tester dependencies
+137 silly prepareForInstallMany adding cleankill@^1.0.0 from web-component-tester dependencies
+138 silly prepareForInstallMany adding express@^4.8.5 from web-component-tester dependencies
+139 silly prepareForInstallMany adding findup-sync@^0.2.1 from web-component-tester dependencies
+140 silly prepareForInstallMany adding glob@^5.0.15 from web-component-tester dependencies
+141 silly prepareForInstallMany adding lodash@^3.0.1 from web-component-tester dependencies
+142 silly prepareForInstallMany adding mocha@^2.2.4 from web-component-tester dependencies
+143 silly prepareForInstallMany adding nomnom@^1.8.1 from web-component-tester dependencies
+144 silly prepareForInstallMany adding resolve@^1.0.0 from web-component-tester dependencies
+145 silly prepareForInstallMany adding send@^0.11.1 from web-component-tester dependencies
+146 silly prepareForInstallMany adding serve-waterfall@^1.1.0 from web-component-tester dependencies
+147 silly prepareForInstallMany adding server-destroy@^1.0.1 from web-component-tester dependencies
+148 silly prepareForInstallMany adding sinon@^1.11.1 from web-component-tester dependencies
+149 silly prepareForInstallMany adding sinon-chai@^2.6.0 from web-component-tester dependencies
+150 silly prepareForInstallMany adding socket.io@^1.3.7 from web-component-tester dependencies
+151 silly prepareForInstallMany adding stacky@^1.3.1 from web-component-tester dependencies
+152 silly prepareForInstallMany adding test-fixture@github:PolymerElements/test-fixture from web-component-tester dependencies
+153 silly prepareForInstallMany adding wd@^0.3.8 from web-component-tester dependencies
+154 silly prepareForInstallMany adding update-notifier@^0.6.0 from web-component-tester dependencies
+155 silly prepareForInstallMany adding wct-local@^2.0.0 from web-component-tester dependencies
+156 silly prepareForInstallMany adding wct-sauce@^1.8.2 from web-component-tester dependencies
+157 silly cache add args [ 'chai@^3.2.0', null ]
+158 verbose cache add spec chai@^3.2.0
+159 silly cache add parsed spec Result {
+159 silly cache add   raw: 'chai@^3.2.0',
+159 silly cache add   scope: null,
+159 silly cache add   name: 'chai',
+159 silly cache add   rawSpec: '^3.2.0',
+159 silly cache add   spec: '>=3.2.0 <4.0.0',
+159 silly cache add   type: 'range' }
+160 verbose addNamed chai@>=3.2.0 <4.0.0
+161 silly addNamed semver.valid null
+162 silly addNamed semver.validRange >=3.2.0 <4.0.0
+163 silly addNameRange { name: 'chai', range: '>=3.2.0 <4.0.0', hasData: false }
+164 silly mapToRegistry name chai
+165 silly mapToRegistry using default registry
+166 silly mapToRegistry registry https://registry.npmjs.org/
+167 silly mapToRegistry uri https://registry.npmjs.org/chai
+168 verbose addNameRange registry:https://registry.npmjs.org/chai not in flight; fetching
+169 silly cache add args [ 'chalk@^1.1.1', null ]
+170 verbose cache add spec chalk@^1.1.1
+171 silly cache add parsed spec Result {
+171 silly cache add   raw: 'chalk@^1.1.1',
+171 silly cache add   scope: null,
+171 silly cache add   name: 'chalk',
+171 silly cache add   rawSpec: '^1.1.1',
+171 silly cache add   spec: '>=1.1.1 <2.0.0',
+171 silly cache add   type: 'range' }
+172 verbose addNamed chalk@>=1.1.1 <2.0.0
+173 silly addNamed semver.valid null
+174 silly addNamed semver.validRange >=1.1.1 <2.0.0
+175 silly addNameRange { name: 'chalk', range: '>=1.1.1 <2.0.0', hasData: false }
+176 silly mapToRegistry name chalk
+177 silly mapToRegistry using default registry
+178 silly mapToRegistry registry https://registry.npmjs.org/
+179 silly mapToRegistry uri https://registry.npmjs.org/chalk
+180 verbose addNameRange registry:https://registry.npmjs.org/chalk not in flight; fetching
+181 silly cache add args [ 'cleankill@^1.0.0', null ]
+182 verbose cache add spec cleankill@^1.0.0
+183 silly cache add parsed spec Result {
+183 silly cache add   raw: 'cleankill@^1.0.0',
+183 silly cache add   scope: null,
+183 silly cache add   name: 'cleankill',
+183 silly cache add   rawSpec: '^1.0.0',
+183 silly cache add   spec: '>=1.0.0 <2.0.0',
+183 silly cache add   type: 'range' }
+184 verbose addNamed cleankill@>=1.0.0 <2.0.0
+185 silly addNamed semver.valid null
+186 silly addNamed semver.validRange >=1.0.0 <2.0.0
+187 silly addNameRange { name: 'cleankill', range: '>=1.0.0 <2.0.0', hasData: false }
+188 silly mapToRegistry name cleankill
+189 silly mapToRegistry using default registry
+190 silly mapToRegistry registry https://registry.npmjs.org/
+191 silly mapToRegistry uri https://registry.npmjs.org/cleankill
+192 verbose addNameRange registry:https://registry.npmjs.org/cleankill not in flight; fetching
+193 silly cache add args [ 'express@^4.8.5', null ]
+194 verbose cache add spec express@^4.8.5
+195 silly cache add parsed spec Result {
+195 silly cache add   raw: 'express@^4.8.5',
+195 silly cache add   scope: null,
+195 silly cache add   name: 'express',
+195 silly cache add   rawSpec: '^4.8.5',
+195 silly cache add   spec: '>=4.8.5 <5.0.0',
+195 silly cache add   type: 'range' }
+196 verbose addNamed express@>=4.8.5 <5.0.0
+197 silly addNamed semver.valid null
+198 silly addNamed semver.validRange >=4.8.5 <5.0.0
+199 silly addNameRange { name: 'express', range: '>=4.8.5 <5.0.0', hasData: false }
+200 silly mapToRegistry name express
+201 silly mapToRegistry using default registry
+202 silly mapToRegistry registry https://registry.npmjs.org/
+203 silly mapToRegistry uri https://registry.npmjs.org/express
+204 verbose addNameRange registry:https://registry.npmjs.org/express not in flight; fetching
+205 silly cache add args [ 'findup-sync@^0.2.1', null ]
+206 verbose cache add spec findup-sync@^0.2.1
+207 silly cache add parsed spec Result {
+207 silly cache add   raw: 'findup-sync@^0.2.1',
+207 silly cache add   scope: null,
+207 silly cache add   name: 'findup-sync',
+207 silly cache add   rawSpec: '^0.2.1',
+207 silly cache add   spec: '>=0.2.1 <0.3.0',
+207 silly cache add   type: 'range' }
+208 verbose addNamed findup-sync@>=0.2.1 <0.3.0
+209 silly addNamed semver.valid null
+210 silly addNamed semver.validRange >=0.2.1 <0.3.0
+211 silly addNameRange { name: 'findup-sync', range: '>=0.2.1 <0.3.0', hasData: false }
+212 silly mapToRegistry name findup-sync
+213 silly mapToRegistry using default registry
+214 silly mapToRegistry registry https://registry.npmjs.org/
+215 silly mapToRegistry uri https://registry.npmjs.org/findup-sync
+216 verbose addNameRange registry:https://registry.npmjs.org/findup-sync not in flight; fetching
+217 silly cache add args [ 'glob@^5.0.15', null ]
+218 verbose cache add spec glob@^5.0.15
+219 silly cache add parsed spec Result {
+219 silly cache add   raw: 'glob@^5.0.15',
+219 silly cache add   scope: null,
+219 silly cache add   name: 'glob',
+219 silly cache add   rawSpec: '^5.0.15',
+219 silly cache add   spec: '>=5.0.15 <6.0.0',
+219 silly cache add   type: 'range' }
+220 verbose addNamed glob@>=5.0.15 <6.0.0
+221 silly addNamed semver.valid null
+222 silly addNamed semver.validRange >=5.0.15 <6.0.0
+223 silly addNameRange { name: 'glob', range: '>=5.0.15 <6.0.0', hasData: false }
+224 silly mapToRegistry name glob
+225 silly mapToRegistry using default registry
+226 silly mapToRegistry registry https://registry.npmjs.org/
+227 silly mapToRegistry uri https://registry.npmjs.org/glob
+228 verbose addNameRange registry:https://registry.npmjs.org/glob not in flight; fetching
+229 silly cache add args [ 'lodash@^3.0.1', null ]
+230 verbose cache add spec lodash@^3.0.1
+231 silly cache add parsed spec Result {
+231 silly cache add   raw: 'lodash@^3.0.1',
+231 silly cache add   scope: null,
+231 silly cache add   name: 'lodash',
+231 silly cache add   rawSpec: '^3.0.1',
+231 silly cache add   spec: '>=3.0.1 <4.0.0',
+231 silly cache add   type: 'range' }
+232 verbose addNamed lodash@>=3.0.1 <4.0.0
+233 silly addNamed semver.valid null
+234 silly addNamed semver.validRange >=3.0.1 <4.0.0
+235 silly addNameRange { name: 'lodash', range: '>=3.0.1 <4.0.0', hasData: false }
+236 silly mapToRegistry name lodash
+237 silly mapToRegistry using default registry
+238 silly mapToRegistry registry https://registry.npmjs.org/
+239 silly mapToRegistry uri https://registry.npmjs.org/lodash
+240 verbose addNameRange registry:https://registry.npmjs.org/lodash not in flight; fetching
+241 silly cache add args [ 'mocha@^2.2.4', null ]
+242 verbose cache add spec mocha@^2.2.4
+243 silly cache add parsed spec Result {
+243 silly cache add   raw: 'mocha@^2.2.4',
+243 silly cache add   scope: null,
+243 silly cache add   name: 'mocha',
+243 silly cache add   rawSpec: '^2.2.4',
+243 silly cache add   spec: '>=2.2.4 <3.0.0',
+243 silly cache add   type: 'range' }
+244 verbose addNamed mocha@>=2.2.4 <3.0.0
+245 silly addNamed semver.valid null
+246 silly addNamed semver.validRange >=2.2.4 <3.0.0
+247 silly addNameRange { name: 'mocha', range: '>=2.2.4 <3.0.0', hasData: false }
+248 silly mapToRegistry name mocha
+249 silly mapToRegistry using default registry
+250 silly mapToRegistry registry https://registry.npmjs.org/
+251 silly mapToRegistry uri https://registry.npmjs.org/mocha
+252 verbose addNameRange registry:https://registry.npmjs.org/mocha not in flight; fetching
+253 silly cache add args [ 'nomnom@^1.8.1', null ]
+254 verbose cache add spec nomnom@^1.8.1
+255 silly cache add parsed spec Result {
+255 silly cache add   raw: 'nomnom@^1.8.1',
+255 silly cache add   scope: null,
+255 silly cache add   name: 'nomnom',
+255 silly cache add   rawSpec: '^1.8.1',
+255 silly cache add   spec: '>=1.8.1 <2.0.0',
+255 silly cache add   type: 'range' }
+256 verbose addNamed nomnom@>=1.8.1 <2.0.0
+257 silly addNamed semver.valid null
+258 silly addNamed semver.validRange >=1.8.1 <2.0.0
+259 silly addNameRange { name: 'nomnom', range: '>=1.8.1 <2.0.0', hasData: false }
+260 silly mapToRegistry name nomnom
+261 silly mapToRegistry using default registry
+262 silly mapToRegistry registry https://registry.npmjs.org/
+263 silly mapToRegistry uri https://registry.npmjs.org/nomnom
+264 verbose addNameRange registry:https://registry.npmjs.org/nomnom not in flight; fetching
+265 silly cache add args [ 'resolve@^1.0.0', null ]
+266 verbose cache add spec resolve@^1.0.0
+267 silly cache add parsed spec Result {
+267 silly cache add   raw: 'resolve@^1.0.0',
+267 silly cache add   scope: null,
+267 silly cache add   name: 'resolve',
+267 silly cache add   rawSpec: '^1.0.0',
+267 silly cache add   spec: '>=1.0.0 <2.0.0',
+267 silly cache add   type: 'range' }
+268 verbose addNamed resolve@>=1.0.0 <2.0.0
+269 silly addNamed semver.valid null
+270 silly addNamed semver.validRange >=1.0.0 <2.0.0
+271 silly addNameRange { name: 'resolve', range: '>=1.0.0 <2.0.0', hasData: false }
+272 silly mapToRegistry name resolve
+273 silly mapToRegistry using default registry
+274 silly mapToRegistry registry https://registry.npmjs.org/
+275 silly mapToRegistry uri https://registry.npmjs.org/resolve
+276 verbose addNameRange registry:https://registry.npmjs.org/resolve not in flight; fetching
+277 silly cache add args [ 'send@^0.11.1', null ]
+278 verbose cache add spec send@^0.11.1
+279 silly cache add parsed spec Result {
+279 silly cache add   raw: 'send@^0.11.1',
+279 silly cache add   scope: null,
+279 silly cache add   name: 'send',
+279 silly cache add   rawSpec: '^0.11.1',
+279 silly cache add   spec: '>=0.11.1 <0.12.0',
+279 silly cache add   type: 'range' }
+280 verbose addNamed send@>=0.11.1 <0.12.0
+281 silly addNamed semver.valid null
+282 silly addNamed semver.validRange >=0.11.1 <0.12.0
+283 silly addNameRange { name: 'send', range: '>=0.11.1 <0.12.0', hasData: false }
+284 silly mapToRegistry name send
+285 silly mapToRegistry using default registry
+286 silly mapToRegistry registry https://registry.npmjs.org/
+287 silly mapToRegistry uri https://registry.npmjs.org/send
+288 verbose addNameRange registry:https://registry.npmjs.org/send not in flight; fetching
+289 silly cache add args [ 'serve-waterfall@^1.1.0', null ]
+290 verbose cache add spec serve-waterfall@^1.1.0
+291 silly cache add parsed spec Result {
+291 silly cache add   raw: 'serve-waterfall@^1.1.0',
+291 silly cache add   scope: null,
+291 silly cache add   name: 'serve-waterfall',
+291 silly cache add   rawSpec: '^1.1.0',
+291 silly cache add   spec: '>=1.1.0 <2.0.0',
+291 silly cache add   type: 'range' }
+292 verbose addNamed serve-waterfall@>=1.1.0 <2.0.0
+293 silly addNamed semver.valid null
+294 silly addNamed semver.validRange >=1.1.0 <2.0.0
+295 silly addNameRange { name: 'serve-waterfall',
+295 silly addNameRange   range: '>=1.1.0 <2.0.0',
+295 silly addNameRange   hasData: false }
+296 silly mapToRegistry name serve-waterfall
+297 silly mapToRegistry using default registry
+298 silly mapToRegistry registry https://registry.npmjs.org/
+299 silly mapToRegistry uri https://registry.npmjs.org/serve-waterfall
+300 verbose addNameRange registry:https://registry.npmjs.org/serve-waterfall not in flight; fetching
+301 silly cache add args [ 'server-destroy@^1.0.1', null ]
+302 verbose cache add spec server-destroy@^1.0.1
+303 silly cache add parsed spec Result {
+303 silly cache add   raw: 'server-destroy@^1.0.1',
+303 silly cache add   scope: null,
+303 silly cache add   name: 'server-destroy',
+303 silly cache add   rawSpec: '^1.0.1',
+303 silly cache add   spec: '>=1.0.1 <2.0.0',
+303 silly cache add   type: 'range' }
+304 verbose addNamed server-destroy@>=1.0.1 <2.0.0
+305 silly addNamed semver.valid null
+306 silly addNamed semver.validRange >=1.0.1 <2.0.0
+307 silly addNameRange { name: 'server-destroy',
+307 silly addNameRange   range: '>=1.0.1 <2.0.0',
+307 silly addNameRange   hasData: false }
+308 silly mapToRegistry name server-destroy
+309 silly mapToRegistry using default registry
+310 silly mapToRegistry registry https://registry.npmjs.org/
+311 silly mapToRegistry uri https://registry.npmjs.org/server-destroy
+312 verbose addNameRange registry:https://registry.npmjs.org/server-destroy not in flight; fetching
+313 silly cache add args [ 'sinon@^1.11.1', null ]
+314 verbose cache add spec sinon@^1.11.1
+315 silly cache add parsed spec Result {
+315 silly cache add   raw: 'sinon@^1.11.1',
+315 silly cache add   scope: null,
+315 silly cache add   name: 'sinon',
+315 silly cache add   rawSpec: '^1.11.1',
+315 silly cache add   spec: '>=1.11.1 <2.0.0',
+315 silly cache add   type: 'range' }
+316 verbose addNamed sinon@>=1.11.1 <2.0.0
+317 silly addNamed semver.valid null
+318 silly addNamed semver.validRange >=1.11.1 <2.0.0
+319 silly addNameRange { name: 'sinon', range: '>=1.11.1 <2.0.0', hasData: false }
+320 silly mapToRegistry name sinon
+321 silly mapToRegistry using default registry
+322 silly mapToRegistry registry https://registry.npmjs.org/
+323 silly mapToRegistry uri https://registry.npmjs.org/sinon
+324 verbose addNameRange registry:https://registry.npmjs.org/sinon not in flight; fetching
+325 silly cache add args [ 'sinon-chai@^2.6.0', null ]
+326 verbose cache add spec sinon-chai@^2.6.0
+327 silly cache add parsed spec Result {
+327 silly cache add   raw: 'sinon-chai@^2.6.0',
+327 silly cache add   scope: null,
+327 silly cache add   name: 'sinon-chai',
+327 silly cache add   rawSpec: '^2.6.0',
+327 silly cache add   spec: '>=2.6.0 <3.0.0',
+327 silly cache add   type: 'range' }
+328 verbose addNamed sinon-chai@>=2.6.0 <3.0.0
+329 silly addNamed semver.valid null
+330 silly addNamed semver.validRange >=2.6.0 <3.0.0
+331 silly addNameRange { name: 'sinon-chai', range: '>=2.6.0 <3.0.0', hasData: false }
+332 silly mapToRegistry name sinon-chai
+333 silly mapToRegistry using default registry
+334 silly mapToRegistry registry https://registry.npmjs.org/
+335 silly mapToRegistry uri https://registry.npmjs.org/sinon-chai
+336 verbose addNameRange registry:https://registry.npmjs.org/sinon-chai not in flight; fetching
+337 silly cache add args [ 'socket.io@^1.3.7', null ]
+338 verbose cache add spec socket.io@^1.3.7
+339 silly cache add parsed spec Result {
+339 silly cache add   raw: 'socket.io@^1.3.7',
+339 silly cache add   scope: null,
+339 silly cache add   name: 'socket.io',
+339 silly cache add   rawSpec: '^1.3.7',
+339 silly cache add   spec: '>=1.3.7 <2.0.0',
+339 silly cache add   type: 'range' }
+340 verbose addNamed socket.io@>=1.3.7 <2.0.0
+341 silly addNamed semver.valid null
+342 silly addNamed semver.validRange >=1.3.7 <2.0.0
+343 silly addNameRange { name: 'socket.io', range: '>=1.3.7 <2.0.0', hasData: false }
+344 silly mapToRegistry name socket.io
+345 silly mapToRegistry using default registry
+346 silly mapToRegistry registry https://registry.npmjs.org/
+347 silly mapToRegistry uri https://registry.npmjs.org/socket.io
+348 verbose addNameRange registry:https://registry.npmjs.org/socket.io not in flight; fetching
+349 silly cache add args [ 'stacky@^1.3.1', null ]
+350 verbose cache add spec stacky@^1.3.1
+351 silly cache add parsed spec Result {
+351 silly cache add   raw: 'stacky@^1.3.1',
+351 silly cache add   scope: null,
+351 silly cache add   name: 'stacky',
+351 silly cache add   rawSpec: '^1.3.1',
+351 silly cache add   spec: '>=1.3.1 <2.0.0',
+351 silly cache add   type: 'range' }
+352 verbose addNamed stacky@>=1.3.1 <2.0.0
+353 silly addNamed semver.valid null
+354 silly addNamed semver.validRange >=1.3.1 <2.0.0
+355 silly addNameRange { name: 'stacky', range: '>=1.3.1 <2.0.0', hasData: false }
+356 silly mapToRegistry name stacky
+357 silly mapToRegistry using default registry
+358 silly mapToRegistry registry https://registry.npmjs.org/
+359 silly mapToRegistry uri https://registry.npmjs.org/stacky
+360 verbose addNameRange registry:https://registry.npmjs.org/stacky not in flight; fetching
+361 verbose stack Error: Unsupported URL Type: github:PolymerElements/test-fixture
+361 verbose stack     at parseUrl (C:\Users\srinivasan_varadhara\AppData\Roaming\npm\node_modules\npm\node_modules\npm-package-arg\npa.js:173:13)
+361 verbose stack     at npa (C:\Users\srinivasan_varadhara\AppData\Roaming\npm\node_modules\npm\node_modules\npm-package-arg\npa.js:74:12)
+361 verbose stack     at resolver (C:\Users\srinivasan_varadhara\AppData\Roaming\npm\node_modules\npm\lib\install.js:756:42)
+361 verbose stack     at null._onTimeout (C:\Users\srinivasan_varadhara\AppData\Roaming\npm\node_modules\npm\lib\install.js:751:7)
+361 verbose stack     at Timer.listOnTimeout (timers.js:92:15)
+362 verbose cwd c:\Git\PolyCafe\PolyCafe
+363 error Windows_NT 6.1.7601
+364 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\srinivasan_varadhara\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "web-component-tester"
+365 error node v4.2.2
+366 error npm  v2.2.0
+367 error Unsupported URL Type: github:PolymerElements/test-fixture
+368 error If you need help, you may report this error at:
+368 error     <http://github.com/npm/npm/issues>
+369 verbose exit [ 1, true ]

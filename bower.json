@@ -10,7 +10,8 @@
     "page": "visionmedia/page.js#~1.6.3",
     "vaadin-elements": "0.3.0-beta12",
     "lodash": "~3.10.1",
-    "bootstrap": "~3.3.6"
+    "bootstrap": "~3.3.6",
+    "google-web-components": "~1.0.1"
   },
   "devDependencies": {
     "web-component-tester": "*",

@@ -1,6 +1,7 @@
 upgrade to 1.2
+authentication
 data store
-grid city, cityid both in grid data
+grid city, cityid both in grid data (by url)
 run tests
 grid searchable by text
 grid sortable
