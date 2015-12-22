@@ -8,12 +8,11 @@
       }
     </style>
     
-    <iron-ajax url="../../data/meta-data.json" last-response="{{metaData}}" auto></iron-ajax>
-    <!--<iron-ajax url="../../data/grid-data.json" last-response="{{gridItems}}" auto></iron-ajax>-->
-    <pc-ajax url="../../data/drop-down-config.json" response="{{dropDownConfig}}" auto></pc-ajax>
+    <pc-mock-data grid-items="{{gridItems}}" meta-data="{{metaData}}" drop-down-config="{{dropDownConfig}}"></pc-mock-data>
+    <!--<pc-data location="https://polycafe.firebaseio.com" data="{{gridItems}}" user="{{user}}" table="customers"></pc-data> -->
     
-    <pc-data data="{{gridItems}}" location="https://polycafe.firebaseio.com/customers"></pc-data>
-    
+    <pc-auth id="auth" user="{{user}}" location="https://polycafe.firebaseio.com" user="{{user}}"></pc-auth>
+     
     <paper-dialog id="frmDialog">
         <pc-form-main id="frmMain" form-event="{{formEvent}}" drop-down-config="{{dropDownConfig}}" meta-data="{{metaData}}" form-data="{{formData}}"></pc-form-main>
     </paper-dialog>
@@ -35,7 +34,10 @@
         },
         formData: { },
         formEvent: { observer: '_handleFormEvent'},
-        gridItems: { observer: '_handleGridItemsChange'},
+        gridItems: { 
+          observer: '_handleGridItemsChange',
+          value: []
+          },
       },
       _handleGridItemsChange: function(y) {
         console.log(y);
@@ -63,6 +65,7 @@
         else
         {
           x.Id = this.guid();
+          console.log(x);
           this.push('gridItems', x);
         }
         this.fire('iron-signal', {name: 'updategrid', data: this.gridItems });

@@ -4,7 +4,7 @@
 			"Name": "Id",
 			"Text": "Id",
 			"Required": false,
-			"ElementType": "Id"				
+			"ElementType": "Id"
 		},
 		{
 			"Name": "Name",
@@ -28,9 +28,7 @@
 		{
 			"Name": "Active",
 			"Text": "Active",
-			"ElementType": "Checkbox",
-			"Hidable": true,
-			"Hidden": true
+			"ElementType": "Checkbox"
 		},
 		{
 			"Name": "BirthDate",

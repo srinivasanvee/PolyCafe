@@ -19,13 +19,22 @@
           properties: {
               value: {
                 type: String,
-                notify: true
+                notify: true,
+                observer: '_updateText'
               },
               data: {},
               label: {},
               displayKey: {}, 
               valueKey: {},
+              text: {},
               appendKey: { value: false }
+          },
+          _updateText: function(id) {
+            if(id) {
+              var ind = _.findIndex(this.data, this.valueKey, id);
+              this.text = this.data[ind][this.displayKey];
+              console.log(this.text);
+            }
           },
           PrintMe: function(val) {
             console.log(val);

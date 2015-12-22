@@ -12,7 +12,8 @@
     <pc-grid meta-data="{{metaData}}" 
              grid-items="{{gridItems}}"
              selected-item="{{selectedItem}}"
-             drop-down-config="{{dropDownConfig}}"></pc-grid>
+             drop-down-config="{{dropDownConfig}}"
+             drop-down-data="{{dropDownData}}"></pc-grid>
   </template>
   <script>
   (function() {
@@ -28,7 +29,8 @@
         selectedItem: {
           notify: true
         },
-        dropDownConfig: {} 
+        dropDownConfig: {},
+        dropDownData: {} 
       }
     });
   })();

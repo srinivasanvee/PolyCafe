@@ -1,14 +1,24 @@
+Two way reference, relational data
+Config only in local ? Move else to server
+
+Master detail form
+Name selection control
+
+Run tests
+
+Validation for dropdown, datepicker (required)
+
+Linux setup
+Commands
 upgrade to 1.2
-authentication
-data store
-grid city, cityid both in grid data (by url)
-run tests
+
+Grid ---->
 grid searchable by text
 grid sortable
-grid footer
-auth
-radio button
+Grid row total - footer
+Grid size & scrollable
+Grid paging
+Better row selection by clicking
 
-validation for dropdown, datepicker (required)
-
-Commands
+Data Layer -->
+MongoDb ?

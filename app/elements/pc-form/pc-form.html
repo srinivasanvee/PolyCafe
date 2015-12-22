@@ -91,6 +91,11 @@
                       {
                         dat[x.Name] = obj.children.dateControl.value;
                       }
+                      else if(x.ElementType === 'Dropdown')
+                      {
+                        dat[x.Name] = obj.value;
+                        dat[x.DropdownName] = obj.text;
+                      }
                       else
                       { 
                         dat[x.Name] = obj.value;
