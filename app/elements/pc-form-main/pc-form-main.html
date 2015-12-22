@@ -8,7 +8,7 @@
       }
     </style>
   
-    <pc-form drop-down-config="{{dropDownConfig}}" meta-data="{{metaData}}" form-event="{{formEvent}}" form-data="{{formData}}"></pc-form>
+    <pc-form drop-down-config="{{dropDownConfig}}" meta-data="{{metaData}}" form-event="{{formEvent}}" form-data="{{formData}}" table="{{table}}"></pc-form>
     
   </template>
   <script>
@@ -26,6 +26,7 @@
         formEvent: { notify: true },
         dropDownConfig: {},
         metaData: {},
+        table: {},
         formData: { notify: true }
       }
     });

@@ -4,6 +4,6 @@
 		"DisplayKey": "Name",
 		"ValueKey": "Id",
 		"Label": "City",
-		"Url": "../../data/cities.json"
+		"Url": "../../data/city-data.json"
 	}
 ]

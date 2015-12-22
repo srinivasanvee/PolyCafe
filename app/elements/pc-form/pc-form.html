@@ -40,7 +40,8 @@
         },
         formEvent: {
           notify: true
-        }
+        },
+        table: {}
       },
       onCancelClick: function() {
         this.formEvent = 'Cancel';
@@ -67,10 +68,12 @@
         } 
       }, 
       updateFormData: function(newVal) {
+        
         if(newVal && this.metaData)
         { 
           _.each(this.metaData.Fields, function(x) {
-              document.querySelector('#' + x.Name).value = newVal[x.Name]; 
+              var el = document.querySelector('#' + x.Name);
+              el.value = newVal[x.Name];
           });
         }
       },

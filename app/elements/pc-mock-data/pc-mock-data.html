@@ -2,8 +2,8 @@
 
 <dom-module id="pc-mock-data">
   <template>
-    <iron-ajax url="../../data/meta-data.json" last-response="{{metaData}}" auto></iron-ajax>
-    <iron-ajax url="../../data/grid-data.json" last-response="{{gridItems}}" auto></iron-ajax>
+    <iron-ajax url="../../data/{{table}}-meta-data.json" last-response="{{metaData}}" auto></iron-ajax>
+    <iron-ajax url="../../data/{{table}}-data.json" last-response="{{gridItems}}" auto></iron-ajax>
     <pc-ajax url="../../data/drop-down-config.json" response="{{dropDownConfig}}" auto></pc-ajax>
   </template>
 
@@ -17,7 +17,8 @@
       properties: {
         dropDownConfig: { notify: true },
         metaData:  { notify: true },
-        gridItems: {notify: true }
+        gridItems: {notify: true },
+        table: { }
       }
     });
   })();

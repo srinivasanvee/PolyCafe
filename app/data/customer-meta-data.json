@@ -37,6 +37,5 @@
 			"ElementType": "Date"
 		}
 	],
-	"Header": "Customer",
-	"VisibleRows": 3
+	"Header": "Customer"
 }

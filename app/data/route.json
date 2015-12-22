@@ -1,0 +1,14 @@
+[
+	{
+		"Url": "/",
+		"Route": "home"
+	},
+	{
+		"Url": "/users",
+		"Route": "users"
+	},
+	{
+		"Url": "/contact",
+		"Route": "contact"
+	}
+]

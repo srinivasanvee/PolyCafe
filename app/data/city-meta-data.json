@@ -1,0 +1,17 @@
+{
+	"Fields": [
+		{
+			"Name": "Id",
+			"Text": "Id",
+			"Required": false,
+			"ElementType": "Id"
+		},
+		{
+			"Name": "Name",
+			"Text": "Name",
+			"Required": true,
+			"ElementType": "Text"
+		}
+	],
+	"Header": "City"
+}

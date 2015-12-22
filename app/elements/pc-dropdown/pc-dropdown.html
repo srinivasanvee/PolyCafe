@@ -31,7 +31,7 @@
           },
           _updateText: function(id) {
             if(id) {
-              var ind = _.findIndex(this.data, this.valueKey, id);
+              var ind = _.findIndex(this.data, this.valueKey, String(id));
               this.text = this.data[ind][this.displayKey];
               console.log(this.text);
             }
