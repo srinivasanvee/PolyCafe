@@ -8,13 +8,22 @@
       }
     </style>
      
-    <pc-mock-data grid-items="{{gridItems}}" meta-data="{{metaData}}" drop-down-config="{{dropDownConfig}}" table="{{table}}"></pc-mock-data>
-    <!--<pc-data location="https://polycafe.firebaseio.com" data="{{gridItems}}" user="{{user}}" table="customer"></pc-data> -->
+    <!--<pc-mock-data grid-items="{{gridItems}}" meta-data="{{metaData}}" drop-down-config="{{dropDownConfig}}" table="{{table}}"></pc-mock-data>-->
+    
+    <pc-mock-data meta-data="{{metaData}}" drop-down-config="{{dropDownConfig}}" table="{{table}}"></pc-mock-data>
+    <pc-data location="https://polycafe.firebaseio.com" data="{{gridItems}}" user="{{user}}" table="{{table}}"></pc-data> 
     
     <pc-auth id="auth" user="{{user}}" location="https://polycafe.firebaseio.com" user="{{user}}"></pc-auth>
      
     <paper-dialog id="frmDialog">
-        <pc-form-main id="frmMain" form-event="{{formEvent}}" drop-down-config="{{dropDownConfig}}" meta-data="{{metaData}}" form-data="{{formData}}" table="{{table}}"></pc-form-main>
+        <pc-form-main id="frmMain"  
+                      form-event="{{formEvent}}" 
+                      drop-down-config="{{dropDownConfig}}" 
+                      meta-data="{{metaData}}" 
+                      form-data="{{formData}}"
+                      table="{{table}}"
+                      user="{{user}}"
+                      location="{{location}}"></pc-form-main>
     </paper-dialog>
     
     <paper-icon-button icon="add" style="float:right" on-click="addNew"></paper-icon-button>
@@ -37,8 +46,10 @@
         table: {},
         gridItems: { 
           observer: '_handleGridItemsChange',
-          value: []
+          value: [] 
           },
+        location: {  value: 'https://polycafe.firebaseio.com' },
+        user: { notify: true }
       },
       _handleGridItemsChange: function(y) {
         console.log(y);

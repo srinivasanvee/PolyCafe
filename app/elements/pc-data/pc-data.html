@@ -18,8 +18,9 @@
           observer: '_userChanged'
         },
         location: {
+          value: 'https://polycafe.firebaseio.com'
         },
-        table: {} 
+        table: {}
       },
       _userChanged: function(user) {
         if (user) {
@@ -27,6 +28,8 @@
         } 
       },
       _firebaseLoaded: function() {
+        console.log('firebase control data !');
+        console.log(this.data);
       }
     }); 
   </script>

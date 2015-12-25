@@ -21,15 +21,12 @@
       properties: {
         label: {},
         value: { 
-          notify: true,
-          observer: 'CheckDate' 
+          notify: true
         },
         required: {
         }
       },
       CheckDate: function() {
-        var cont = document.querySelector('#BirthDate');
-        console.log(cont.value);
       }
     });
   })();

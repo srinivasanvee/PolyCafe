@@ -8,7 +8,13 @@
       }
     </style>
   
-    <pc-form drop-down-config="{{dropDownConfig}}" meta-data="{{metaData}}" form-event="{{formEvent}}" form-data="{{formData}}" table="{{table}}"></pc-form>
+    <pc-form drop-down-config="{{dropDownConfig}}" 
+             meta-data="{{metaData}}" 
+             form-event="{{formEvent}}" 
+             form-data="{{formData}}" 
+             table="{{table}}"
+             user="{{user}}"
+             location="{{location}}"></pc-form>
     
   </template>
   <script>
@@ -27,6 +33,8 @@
         dropDownConfig: {},
         metaData: {},
         table: {},
+        location:{},
+        user:{ notify: true },
         formData: { notify: true }
       }
     });
