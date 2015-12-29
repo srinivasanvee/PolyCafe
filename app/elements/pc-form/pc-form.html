@@ -31,7 +31,7 @@
           observer: 'handleMetaData'
         }, 
         formData: {
-          // observer: 'updateFormData'
+          observer: 'updateFormData'
         },
         dropDownConfig: {
         },
@@ -52,10 +52,6 @@
         if (this.user) { 
           return [this.location, 'users', this.user.uid, tbl].join('/');
         }
-      },
-      _userChanged: function(u) {
-        console.log('user changed !');
-        console.log(JSON.stringify(u));
       },
       getSubmitText: function()
       {
@@ -84,7 +80,6 @@
         { 
           _.each(this.metaData.Fields, function(x) {
               var el = document.querySelector(parent.getDocumentId(x));
-              console.log(parent.formData[x.Name]);
               el.value = parent.formData[x.Name];
           });
         } 
@@ -175,27 +170,8 @@
           if(drpIndex >= 0)
           { 
             var conf = this.dropDownConfig[drpIndex];
-            //todo: only incase of mocks  
-            if(false)//if(conf.Url) 
-            {
-                var dynAjax = document.createElement('pc-ajax');
-                dynAjax.setAttribute('url', conf.Url); 
-                dynAjax.MakeCall(true, function(da){
-                  dynDropDown.data = da;  
-                });
-            }
-            if(conf.Table)
-            {
-                //var url = this.userLocation(conf.Table);
-                var item = localStorage.getItem('dropdown.city');
-                console.log('inside dp table !'); 
-                console.log(item);
-                dynDropDown.data = JSON.parse(item);  
-            } 
-            else
-            {
-              dynDropDown.data = conf.Data;
-            }
+            var item = localStorage.getItem('dropdown.' + conf.Table);
+            dynDropDown.data = JSON.parse(item);  
           }
           this.$.ironFormElements.appendChild(dynDropDown);
       },

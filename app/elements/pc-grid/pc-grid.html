@@ -45,8 +45,7 @@
         },
         gridItems: { 
           type: Array,
-          notify: true,
-          observer: '_gridItemsUpdated'
+          notify: true
         },
         selectedItem: {
           notify: true
@@ -54,31 +53,10 @@
         dropDownConfig: {},
         dropDownData: { value: {} }
       },
-      _gridItemsUpdated: function() {
-        console.log('Grid items updated !');
-      },
       getItemValue: function(obj, meta) {
         if(meta.ElementType === 'Dropdown')
         {
           return obj[meta.DropdownName];
-          //  var ind = _.findIndex(this.dropDownConfig, 'Name', meta.DropdownName);
-          //  var dmeta = this.dropDownConfig[ind];
-          //  var dval = obj[meta.Name].toString(); 
-          //  var dat = this.dropDownData[dmeta.Name];
-          //  var datInd = _.findIndex(dat, dmeta.ValueKey, dval); 
-          //  return dat[datInd][dmeta.DisplayKey];
-      
-          // var parent = this;
-          // var dynAjax = document.createElement('pc-ajax');
-          // console.log('url - ' + dmeta.Url);
-          // dynAjax.setAttribute('url', dmeta.Url); 
-          // dynAjax.MakeCall(true, function(dat){
-          //   parent.dropDownData[dmeta.Name] = dat;
-          //   var datInd = _.findIndex(dat, dmeta.ValueKey, dval);
-          //   var retVal = dat[datInd][dmeta.DisplayKey];
-          //   console.log(retVal); 
-          //   return retVal; 
-          // });            
         }
         else
         {
@@ -86,9 +64,7 @@
         }
       },
       updateGridExternal: function() {
-          //this.gridItems = newVal.detail;
-          //this.notifyPath('gridItems', newVal.detail.slice());
-          //console.log(this.gridItems);
+         //todo: refresh the grid on updates   
       },
       onSelect: function(val){ 
           this.selectedItem = val.model.gitem; 

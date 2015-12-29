@@ -1,12 +1,14 @@
 <dom-module id="pc-data">
 
   <template>
-    <firebase-collection location="{{userLocation}}"
+      <span id="idFirebase">
+          </span> 
+    <!--<firebase-collection location="{{userLocation}}"
                          data="{{data}}"
                          on-firebase-value="_firebaseLoaded">
-    </firebase-collection>
+    </firebase-collection>-->
   </template>
-  <script> 
+  <script>  
     Polymer({
       is: 'pc-data',
       properties: {
@@ -20,11 +22,26 @@
         location: {
           value: 'https://polycafe.firebaseio.com'
         },
-        table: {}
+        table: {},
+        useMock: { value: false }
       },
       _userChanged: function(user) {
         if (user) {
-          this.userLocation = [this.location, 'users', this.user.uid, this.table].join('/');
+          if(this.useMock)
+          {
+            this.userLocation = ['../../data/', this.table, '-data.json'].join('');
+          }
+          else
+          {
+            this.userLocation = [this.location, 'users', this.user.uid, this.table].join('/');
+            
+            var fb = document.createElement('firebase-collection');
+            fb.setAttribute('location', this.userLocation);
+            fb.setAttribute('data', this.data);  
+            fb.setAttribute('on-firebase-value', this._firebaseLoaded);
+            //document.querySelector('#idFirebase').appendChild(fb);
+            this.$.idFirebase.appendChild(fb);
+          }
         } 
       },
       _firebaseLoaded: function() {
@@ -34,3 +51,14 @@
     }); 
   </script>
 </dom-module>
+
+
+      <!--_cityUpdated: function(val) {
+        var vals = [];
+        _.forEach(val, function(v) { 
+          vals.push(v); 
+        });
+        
+        var res = JSON.stringify(vals);
+        localStorage.setItem('dropdown.city', res);   
+      }-->

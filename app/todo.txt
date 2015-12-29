@@ -1,3 +1,8 @@
+Feature Config file
+
+
+Data Layer -->
+
 Sidebar by web-control
 Sidebar by config 
 
@@ -25,5 +30,12 @@ Grid size & scrollable
 Grid paging
 Better row selection by clicking
 
-Data Layer -->
 MongoDb?
+Local storage extension?
+
+Data flow sequence 
+MetaData 
+DropdownConfig ->  DropdownData --> GridData  
+
+Component Structure
+pc-meta-data -> pc-dropdown-config -> pc-dropdown-data (on-demand of master data new) 

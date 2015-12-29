@@ -3,10 +3,10 @@
 <dom-module id="pc-mock-data">
   <template>
     <iron-ajax url="../../data/{{table}}-meta-data.json" last-response="{{metaData}}" auto></iron-ajax>
-    <iron-ajax url="../../data/{{table}}-data.json" last-response="{{gridItems}}" auto></iron-ajax>
+    <iron-ajax url="../../data/{{table}}-data.json" last-response="{{data}}" auto></iron-ajax>
     <pc-ajax url="../../data/drop-down-config.json" response="{{dropDownConfig}}" auto></pc-ajax>
 
-    <firebase-document location="https://polycafe.firebaseio.com/users/google%3A103961256376868823284/city" data="{{cities}}"></firebase-document>
+    <!--<firebase-document location="https://polycafe.firebaseio.com/users/google%3A103961256376868823284/city" data="{{cities}}"></firebase-document>-->
   </template>
 
   <script>
@@ -15,23 +15,22 @@
 
     Polymer({
       is: 'pc-mock-data',
-
+ 
       properties: {
-        dropDownConfig: { notify: true },
+        dropDownConfig: { notify: true, observer: '_dropdownConfigUpdated'},
         metaData:  { notify: true },
-        gridItems: {notify: true },
-        table: { },
-        cities: { observer: '_cityUpdated'}
+        table: {},
+        data: { notify: true }
       },
-      _cityUpdated: function(val) {
-        var vals = [];
-        _.forEach(val, function(v) { 
-          vals.push(v);
+      _dropdownConfigUpdated: function(vals) {
+        _.forEach(vals, function(val) {
+            var dynAjax = document.createElement('pc-ajax');
+            dynAjax.setAttribute('url', val.Url); 
+            dynAjax.MakeCall(true, function(da){
+                localStorage.setItem('dropdown.' + val.Table, JSON.stringify(da));      
+            }); 
         });
-        console.log('finalized array !');
-        var res = JSON.stringify(vals);
-        localStorage.setItem('dropdown.city', res);   
-      }
+      } 
       
     });
   })();
