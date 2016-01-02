@@ -1,0 +1,47 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="pc-data-table">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <firebase-document location="{{tableLocation}}"
+                    data="{{tableData}}">
+    </firebase-document>
+    
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({ 
+      is: 'pc-data-table',
+
+      properties: {
+        table: {},
+        location: {},
+        tableData: { observer: '_dataLoaded' },
+        user: { observer: '_userChanged'}
+      },
+      _userChanged: function() {
+         this.tableLocation = [this.location, 'users', this.user.uid, this.table].join('/'); 
+      },
+      _dataLoaded: function(val) {
+          console.log('inside table detail !');
+          if(val) {
+             var vals = [];
+            _.forEach(val, function(v) { 
+            vals.push(v); 
+            });
+            
+            var res = JSON.stringify(vals);
+            localStorage.setItem('dropdown.' + this.table, res);
+            console.log(res);
+          }
+      } 
+    });
+  })();
+  </script>
+</dom-module>

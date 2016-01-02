@@ -34,6 +34,7 @@
           observer: 'updateFormData'
         },
         dropDownConfig: {
+          observer: 'handleMetaData'
         },
         submitText: {
           computed: '_submitText(formData)'
@@ -42,9 +43,9 @@
           notify: true
         },
         table: {},
-        user: { notify: true, observer: 'updateFormData' },
+        user: { notify: true },
         location: {}
-      },
+      }, 
       onCancelClick: function() {
         this.formEvent = 'Cancel';
       },
@@ -59,7 +60,7 @@
         {
           return 'Add';
         }
-      },
+      }, 
       GetValueKey: function(name)
       {
         if(this.formData) { 
@@ -74,13 +75,19 @@
           return 'Add';
         } 
       }, 
+      ready: function() {
+        this.handleMetaData();  
+      },
       updateFormData: function() {
         var parent = this;
-        if(this.formData && this.metaData)
+        if(this.formData && this.metaData && this.dropDownConfig)
         { 
           _.each(this.metaData.Fields, function(x) {
               var el = document.querySelector(parent.getDocumentId(x));
-              el.value = parent.formData[x.Name];
+              if(el)
+              {
+                el.value = parent.formData[x.Name];
+              }
           });
         } 
       },
@@ -164,50 +171,50 @@
           }
 
           dynDropDown.setAttribute('display-key', 'Name');   
-          dynDropDown.setAttribute('value-key', 'Id');
+          dynDropDown.setAttribute('value-key', 'Id'); 
 
           var drpIndex = _.findIndex(this.dropDownConfig, 'Name', x.DropdownName);
-          if(drpIndex >= 0)
-          { 
-            var conf = this.dropDownConfig[drpIndex];
-            var item = localStorage.getItem('dropdown.' + conf.Table);
-            dynDropDown.data = JSON.parse(item);  
-          }
+          dynDropDown.setAttribute('data-name', this.dropDownConfig[drpIndex].Name);
           this.$.ironFormElements.appendChild(dynDropDown);
       },
       handleMetaData: function() {
-          var parent = this;
-          this.$.ironFormElements.innerHtml = '';
-          _.each(this.metaData.Fields, function(x) {
-              switch(x.ElementType)
-              {
-                case 'Text':
-                {
-                    parent.addTextElement(x);
-                    break;
-                }
-                case 'Dropdown':
-                {
-                    parent.addDropdownElement(x);
-                    break;
-                }
-                case 'Checkbox':
-                {
-                    parent.addCheckboxElement(x);
-                    break;
-                }
-                case 'Date':
-                {
-                    parent.addDateElement(x);
-                    break;
-                }
-                case 'Id':
-                {
-                    parent.addIdElement(x);
-                    break;
-                }
-              }
-          });
+          if(this.metaData && this.dropDownConfig)
+          {
+                var parent = this;
+                this.$.ironFormElements.innerHtml = '';
+                _.each(this.metaData.Fields, function(x) {
+                    switch(x.ElementType)
+                    {
+                        case 'Text':
+                        {
+                            parent.addTextElement(x);
+                            break;
+                        }
+                        case 'Dropdown':
+                        {
+                            parent.addDropdownElement(x);
+                            break;
+                        }
+                        case 'Checkbox':
+                        {
+                            parent.addCheckboxElement(x);
+                            break;
+                        }
+                        case 'Date':
+                        {
+                            parent.addDateElement(x);
+                            break;
+                        }
+                        case 'Id':
+                        {
+                            parent.addIdElement(x);
+                            break;
+                        }
+                    }
+                });
+               
+               setTimeout(this.updateFormData(), 1000);
+        }
       }
     });
   })();

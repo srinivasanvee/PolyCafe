@@ -1,64 +1,54 @@
 <dom-module id="pc-data">
 
   <template>
-      <span id="idFirebase">
-          </span> 
-    <!--<firebase-collection location="{{userLocation}}"
+    <firebase-collection location="{{userLocation}}"
                          data="{{data}}"
                          on-firebase-value="_firebaseLoaded">
-    </firebase-collection>-->
+    </firebase-collection>
+    
+    <iron-ajax id="dpMetaData" url="../../data/{{table}}-meta-data.json" last-response="{{metaData}}"></iron-ajax>
+    <pc-ajax id="dpConfig" url="../../data/drop-down-config.json" response="{{dropDownConfig}}"></pc-ajax>
+    
+    <template is="dom-repeat" items="{{dropDownConfig}}">
+        <pc-data-table table="{{item.Name}}" user="{{user}}" location="{{location}}"></pc-data-table>
+    </template>
+                               
   </template>
-  <script>  
-    Polymer({
-      is: 'pc-data',
+  <script> 
+    Polymer({ 
+      is: 'pc-data', 
       properties: {
         data: {
           notify: true,
           value: []
         },
+        metaData:  { notify: true },
         user: {
+          notify: true,
           observer: '_userChanged'
         },
         location: {
           value: 'https://polycafe.firebaseio.com'
         },
         table: {},
-        useMock: { value: false }
+        dropDownConfig: { notify: true }
       },
       _userChanged: function(user) {
         if (user) {
-          if(this.useMock)
-          {
-            this.userLocation = ['../../data/', this.table, '-data.json'].join('');
-          }
-          else
-          {
+            this.$.dpMetaData.generateRequest();
+            this.$.dpConfig.MakeCall(true);
             this.userLocation = [this.location, 'users', this.user.uid, this.table].join('/');
-            
-            var fb = document.createElement('firebase-collection');
-            fb.setAttribute('location', this.userLocation);
-            fb.setAttribute('data', this.data);  
-            fb.setAttribute('on-firebase-value', this._firebaseLoaded);
-            //document.querySelector('#idFirebase').appendChild(fb);
-            this.$.idFirebase.appendChild(fb);
-          }
-        } 
+        }
       },
-      _firebaseLoaded: function() {
-        console.log('firebase control data !');
-        console.log(this.data);
-      }
+      getTableLocation: function(tbl) {
+          return [this.location, 'users', this.user.uid, tbl].join('/');
+      },
+      _firebaseLoaded: function() { 
+      },
+      _masterDataLoaded: function(dpData, dyt) {
+          console.log('inside dp data !');  
+          console.log(dyt);
+      }  
     }); 
   </script>
 </dom-module>
-
-
-      <!--_cityUpdated: function(val) {
-        var vals = [];
-        _.forEach(val, function(v) { 
-          vals.push(v); 
-        });
-        
-        var res = JSON.stringify(vals);
-        localStorage.setItem('dropdown.city', res);   
-      }-->

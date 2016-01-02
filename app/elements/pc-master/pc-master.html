@@ -12,20 +12,18 @@
         meta-data="{{metaData}}" 
         drop-down-config="{{dropDownConfig}}"
         data="{{gridItems}}" 
-        table="{{table}}"
-        use-mock="{{useMock}}"> 
-    </pc-mock-data>  
+        table="{{table}}"> 
+    </pc-mock-data>
     
-    <!--<pc-data 
+    <!--<pc-data
+        meta-data="{{metaData}}"
+        drop-down-config="{{dropDownConfig}}"
         location="{{location}}"  
         data="{{gridItems}}" 
         user="{{user}}" 
-        table="{{table}}"
-        use-mock="{{useMock}}">
-    </pc-data> -->
+        table="{{table}}">
+    </pc-data>--> 
         
-    <pc-auth id="auth" user="{{user}}" location="{{location}}" user="{{user}}"></pc-auth>
-     
     <paper-dialog id="frmDialog">
         <pc-form-main id="frmMain"  
                       form-event="{{formEvent}}" 
@@ -55,7 +53,6 @@
         formData: { },
         formEvent: { observer: '_handleFormEvent'},
         table: {},
-        useMock: true,
         gridItems: { 
           value: [] 
           },

@@ -103,19 +103,21 @@
 
         </paper-toolbar>
 
+        <pc-auth id="auth" location="https://polycafe.firebaseio.com" user="{{user}}"></pc-auth>
+        
         <!-- Main Content -->
         <div class="content">
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
             
             <section data-route="customer">
               <paper-material elevation="1">
-                  <pc-master table="customer"></pc-master>
+                  <pc-master table="Customer" user="{{user}}"></pc-master>
               </paper-material>
             </section>
 
             <section data-route="city">
               <paper-material elevation="1">
-                  <pc-master table="city"></pc-master>
+                  <pc-master table="City" user="{{user}}"></pc-master>
               </paper-material>
             </section>
 

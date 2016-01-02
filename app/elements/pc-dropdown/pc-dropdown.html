@@ -23,6 +23,7 @@
                 observer: '_updateText'
               },
               data: {},
+              dataName: { observer: '_updateData' },
               label: {},
               displayKey: {}, 
               valueKey: {},
@@ -54,8 +55,13 @@
             {
               text = text + ' (' + obj[this.valueKey] + ')';
             }
-            return text;
+            return text; 
+          },
+          _updateData: function() {
+              var item = localStorage.getItem('dropdown.' + this.dataName);
+              this.data = JSON.parse(item);
           }
+          
       });
     })();
   </script>
