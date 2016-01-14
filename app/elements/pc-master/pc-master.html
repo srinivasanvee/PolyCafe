@@ -36,7 +36,7 @@
     </paper-dialog>
     
     <paper-icon-button icon="add" style="float:right" on-click="addNew"></paper-icon-button>
-    <pc-grid-main meta-data="{{metaData}}" grid-items="{{gridItems}}" selected-item="{{selectedItem}}" drop-down-config="{{dropDownConfig}}"></pc-grid-main>
+    <pc-grid-main refresh-id="{{refreshId}}" meta-data="{{metaData}}" grid-items="{{gridItems}}" selected-item="{{selectedItem}}" drop-down-config="{{dropDownConfig}}"></pc-grid-main>
     
   </template>
   <script> 
@@ -53,9 +53,12 @@
         formData: { },
         formEvent: { observer: '_handleFormEvent'},
         table: {},
+        
         gridItems: { 
-          value: [] 
-          },
+          value: [],
+          notify: true
+        },
+        metaData: {},
         location: {  value: 'https://polycafe.firebaseio.com' },
         user: { notify: true }
       },
@@ -65,8 +68,7 @@
             .toString(16)
             .substring(1);
         }
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-          s4() + '-' + s4() + s4() + s4();
+        return s4() + s4() + s4() + s4() + s4();
       },
       addNew: function() {
         this.formData = {};
@@ -78,11 +80,11 @@
           var ind = _.findIndex(this.gridItems, 'Id', x.Id);
           var itm = this.gridItems[ind];
           _.assign(itm, x);
+          this.refreshId = this.guid();
         }
         else
         {
           x.Id = this.guid();
-          console.log(x);
           this.push('gridItems', x);
         }
         this.fire('iron-signal', {name: 'updategrid', data: this.gridItems });

@@ -80,6 +80,11 @@
             <iron-icon icon="info"></iron-icon>
             <span>City</span>
           </a>
+          
+          <a data-route="invoice" href="/invoice" on-click="onDataRouteClick">
+            <iron-icon icon="info"></iron-icon>
+            <span>Invoice</span>
+          </a>
         </paper-menu>
       </paper-scroll-header-panel>
 
@@ -121,6 +126,12 @@
               </paper-material>
             </section>
 
+            <section data-route="invoice">
+              <paper-material elevation="1">
+                  <pc-master table="Invoice" user="{{user}}"></pc-master>
+              </paper-material>
+            </section>
+            
           </iron-pages>
         </div>
         

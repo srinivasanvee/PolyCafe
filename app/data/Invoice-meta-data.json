@@ -1,0 +1,50 @@
+{
+	"Fields": [
+		{
+			"Name": "Id",
+			"Text": "Id",
+			"Required": false,
+			"ElementType": "Id"
+		},
+        {
+			"Name": "Notes",
+			"Text": "Notes",
+			"ElementType": "Text",
+			"Required": false
+		},
+		{
+			"Name": "CustomerId",
+			"Text": "Customer",
+			"Required": true,
+			"ElementType": "Dropdown",
+            "DropdownName": "Customer"
+		},
+        {
+			"Name": "InvocieDate",
+			"Text": "Invoice Date",
+			"Required": true,
+			"ElementType": "Date"
+		},
+        {
+            "Name": "Products",
+			"Text": "Products",
+			"Required": true,
+			"ElementType": "Detail",
+            "Fields": [
+               {
+                "Name": "Id",
+                "Text": "Id",
+                "Required": false,
+                "ElementType": "Id"
+               },
+               {
+                "Name": "Product",
+                "Text": "Product",
+                "ElementType": "Text",
+                "Required": false
+               }
+            ]
+        }
+	],
+	"Header": "Invoice"
+}

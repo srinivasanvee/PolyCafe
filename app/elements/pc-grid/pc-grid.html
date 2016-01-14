@@ -10,6 +10,12 @@
     
    <iron-signals on-iron-signal-updategrid="updateGridExternal"></iron-signals>
    
+    <!--<template id="idTemplate" is="dom-repeat" idtems="{{gridItems}}" as="gitem" id="idGridData">
+        <template is="dom-repeat" items="{{metaData.Fields}}">
+            <div>{{getItemValueidGridData(gitem, item) }}</div>
+        </template>  
+    </template>-->
+   
    <table class="table table-striped table-bordered table-hover table-condensed">
       <tbody>
         <tr>
@@ -18,7 +24,7 @@
               <th>{{item.Text}}</th>
           </template>
         </tr>
-        <template id="idTemplate" is="dom-repeat" items="{{gridItems}}" as="gitem">
+        <template id="idTemplate" is="dom-repeat" items="{{gridItems}}" as="gitem" id="idGridData">
           <tr>
             <td><input type="radio" name="rdoItems" id="{{gitem.Id}}" on-click="onSelect"></td>
             <template is="dom-repeat" items="{{metaData.Fields}}">
@@ -29,6 +35,7 @@
       </tbody>
    </table>
 
+   
   </template>
   <script>
   (function() {
@@ -51,7 +58,8 @@
           notify: true
         },
         dropDownConfig: {},
-        dropDownData: { value: {} }
+        dropDownData: { value: {} },
+        refreshId: { observer: '_updateTriggered', notify: true }
       },
       getItemValue: function(obj, meta) {
         if(meta.ElementType === 'Dropdown')
@@ -63,12 +71,28 @@
           return obj[meta.Name];
         }
       },
+      updateTest: function(data) {
+        console.log('update sample inside !');
+        this.gridItems = data.detail; 
+        document.querySelector('#idGridData').render();
+        console.log(data);
+      },
       updateGridExternal: function() {
-         //todo: refresh the grid on updates   
+        //  this.updateTest(data.detail);
+        //  this.gridItems = data.detail; 
+        //  this.$.idGridData.render();
+        //  console.log('updated external !');
+        //  console.log(this.gridItems);   
       },
       onSelect: function(val){ 
           this.selectedItem = val.model.gitem; 
-      } 
+      },
+      _updateTriggered: function(v) {
+        console.log('update triggered inside grid 333  !');
+        //this.$.idGridData.render();
+        // var el = document.querySelector('#idGridData');
+        // console.log(el);
+      }
     });
   })();
   </script>

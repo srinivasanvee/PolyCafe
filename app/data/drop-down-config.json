@@ -5,5 +5,12 @@
 		"ValueKey": "Id",
 		"Label": "City",
 		"Url": "../../data/City-data.json"
+	},
+    {
+		"Name": "Customer",
+		"DisplayKey": "Name",
+		"ValueKey": "Id",
+		"Label": "Customer",
+		"Url": "../../data/Customer-data.json"
 	}
 ]

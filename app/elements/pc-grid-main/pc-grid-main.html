@@ -13,7 +13,8 @@
              grid-items="{{gridItems}}"
              selected-item="{{selectedItem}}"
              drop-down-config="{{dropDownConfig}}"
-             drop-down-data="{{dropDownData}}"></pc-grid>
+             drop-down-data="{{dropDownData}}"
+             refresh-id="{{refreshId}}"></pc-grid>
   </template>
   <script>
   (function() {
@@ -25,15 +26,19 @@
       properties: {
         metaData: {},
         gridItems: {
+            notify: true
         },
         selectedItem: {
           notify: true
         },
         dropDownConfig: {},
-        dropDownData: {} 
+        dropDownData: {},
+        refreshId: { observer: '_updateTriggered', notify: true }
       }
     });
+
+
   })();
   
   </script>
-</dom-module>
+</dom-module> 
